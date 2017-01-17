@@ -1,0 +1,11 @@
+@import "../framework/sass/fn.scss";
+@import "../framework/sass/theme/<%=THEME_NAME%>/variables.scss";
+@import "../components/c-variables.scss";
+@import "common.scss";
+
+//import your used modules scss files
+@import "modules/m_layout/sass/layout.scss";
+@import "modules/m_login/sass/index.scss";
+@import "modules/m_home/sass/index.scss";
+@import "modules/m_project/sass/index.scss";
+@import "modules/m_posting/sass/index.scss";

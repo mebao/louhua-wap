@@ -1,0 +1,133 @@
+<div ng-controller="postingCtrl" class="posting-page">
+	<div class="popup-mask" ng-show="errorMsg">
+        <div class="popup-section text-center">
+            <div class="pad10 mt60">Please complete all option before submitting</div>
+        </div>
+    </div>
+	<div class="content-page flex">
+		<div class="top-section">
+			<div class="tab-box">
+				<div class="tab-header">
+					<div class="tab-item" ng-class="{'active': selectedTab==0}" ng-click="checkTab(0)">I Have</div>
+					<div class="tab-item" ng-class="{'active': selectedTab==1}" ng-click="checkTab(1)">I Want</div>
+				</div>
+			</div>
+		</div>
+		<div class="content-section flex-1">
+			<div class="" ng-show="selectedTab==0">
+				<div class="pad20">
+					<form name="postForm">
+						<div class="mt10 flex">
+							<div class="input-label">Post Type:</div>
+							<div class="flex-1 flex">
+								<div class="type-select" ng-class="{'active': selectedType=='have'}" ng-click="checkType('have')">I have</div>
+								<div class="flex-1"></div>
+								<div class="type-select" ng-class="{'active': selectedType=='want'}" ng-click="checkType('want')">I want</div>
+							</div>
+						</div>
+						<div class="mt10 flex">
+							<div class="input-label">Project:</div>
+							<div class="flex-1">
+								<select ng-model="project" ng-options="optionsProject as optionsProject.value for optionsProject in results.optionsProject">
+
+								</select>
+							</div>
+						</div>
+						<div class="mt10 flex">
+							<div class="input-label">Unit Type:</div>
+							<div class="flex-1">
+								<select ng-model="unit_type" ng-options="key as value for (key, value) in results.optionsUnitType">
+
+								</select>
+							</div>
+						</div>
+						<div class="mt10 flex">
+							<div class="input-label">Exposure:</div>
+							<div class="flex-1">
+								<select ng-model="exposure" ng-options="key as value for (key, value) in results.optionsExposure">
+
+								</select>
+							</div>
+						</div>
+						<div class="mt10 flex" ng-show="selectedType=='have'">
+							<div class="input-label">Floor Level:</div>
+							<div class="flex-1">
+								<input type="text" ng-model="floor_level" placeholder="Floor Level">
+							</div>
+						</div>
+						<div class="mt10 flex" ng-show="selectedType=='want'">
+							<div class="input-label">Floor low:</div>
+							<div class="flex-1">
+								<input type="text" ng-model="expect_floor_low" placeholder="Floor low">
+							</div>
+						</div>
+						<div class="mt10 flex" ng-show="selectedType=='want'">
+							<div class="input-label">Floor high:</div>
+							<div class="flex-1">
+								<input type="text" ng-model="expect_floor_high" placeholder="Floor high">
+							</div>
+						</div>
+						<div class="mt10 flex">
+							<div class="input-label">Price:</div>
+							<div class="flex-1">
+								<input type="text" ng-model="price" placeholder="Price">
+							</div>
+						</div>
+						<div class="mt10 flex">
+							<div class="input-label">Prefer Coop:</div>
+							<div class="flex-1">
+								<input type="text" ng-model="coop" placeholder="Prefer Coop">
+							</div>
+						</div>
+						<div class="btn-dock mt20">
+							<button ng-click="createPost()" class="btn btn-primary">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="" ng-show="selectedTab==1">
+				<div class="tab-list">
+					<div class="tab-item" ng-repeat="post in postList">
+						<div class="flex">
+							<div class="w60p">
+								头像
+							</div>
+							<div class="flex-1">
+								<div class="flex">
+									<div class="w70p flex">
+										<img src="app/images/bed.png" class="icon-bed">
+										type:{{post.type}}
+									</div>
+									<div class="flex-1 flex">
+										<img src="app/images/sun.png" class="icon-sun">
+										exposure:{{post.exposure}}
+									</div>
+									<div class="w70p flex">
+										<img src="app/images/balance.png" class="icon-balance">
+										coop:{{post.coop}}
+									</div>
+								</div>
+								<div class="flex">
+									<div class="w70p flex">
+										<img src="app/images/floor.png" class="icon-floor">
+										floor:{{post.floor}}
+									</div>
+									<div class="flex">
+										<img src="app/images/dollar.png" class="icon-dollar">
+										price: {{post.price}}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="flex mt10">
+							<div class="flex-1">
+								post time: 2017/04/05 13:00 pm
+							</div>
+							<div ng-click="delet(post)">delet</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

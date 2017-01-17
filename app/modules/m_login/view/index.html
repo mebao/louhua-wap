@@ -1,0 +1,31 @@
+<div ng-controller="loginCtrl" class="login-page">
+	<div class="popup-mask" ng-show="errorMsg">
+        <div class="popup-section text-center">
+            <div class="pad10 mt60">Please complete all option before submitting</div>
+        </div>
+    </div>
+	<div class="content-page pad20">
+		<form name="loginForm">
+			<div class="mt40">
+				<input type="text" ng-model="username" placeholder="Email">
+			</div>
+			<div class="mt20">
+				<input type="password" ng-model="password" placeholder="Password">
+			</div>
+			<div class="btn-dock mt20">
+				<div class="left-dock">
+					<button ng-click="login()" class="btn btn-primary">Log In</button>
+				</div>
+				<div class="right-dock">
+					<button ng-click="goRouter('layout.register')" class="btn btn-primary">Sign Up</button>
+				</div>
+			</div>
+			<div class="mt20 text-center">
+				Or Log In With:
+			</div>
+			<div class="mt20 text-center">
+				<img ng-click="goRouter('layout.account')" src="app/images/wechat.png" class="w60p">
+			</div>
+		</form>
+	</div>
+</div>

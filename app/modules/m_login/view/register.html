@@ -1,0 +1,66 @@
+<div ng-controller="registerCtrl" class="register-page">
+	<div class="popup-mask" ng-show="errorMsg">
+        <div class="popup-section text-center">
+            <div class="pad10 mt60">Please complete all option before submitting</div>
+        </div>
+    </div>
+	<div class="content-page pad20">
+		<form name="registerName">
+			<div class="text-center">
+				<img src="app/images/user.png" class="w110p">
+			</div>
+			<div class="user-img flex">
+				<div class="flex-1"></div>
+				<div class="info-img">
+					<div id="uploadImgBox"></div>
+				</div>
+				<div class="flex-1"></div>
+			</div>
+			<div class="">
+				<input type="text" ng-model="username" placeholder="Email" class="text-center">
+			</div>
+			<div class="mt10">
+				<input type="password" ng-model="password_raw" placeholder="Password" class="text-center">
+			</div>
+			<div class="mt10 flex">
+				<div class="input-label">WeChat ID:</div>
+				<div class="flex-1">
+					<input type="text" ng-model="wechat_id" placeholder="WeChat ID">
+				</div>
+			</div>
+			<div class="mt10 flex">
+				<div class="input-label">Full Name:</div>
+				<div class="flex-1">
+					<input type="text" ng-model="real_name" placeholder="Full Name">
+				</div>
+			</div>
+			<div class="mt10 flex">
+				<div class="input-label">Company:</div>
+				<div class="flex-1">
+					<input type="text" ng-model="brokerage_name" placeholder="Company">
+				</div>
+			</div>
+			<div class="mt10 flex">
+				<div class="input-label">Cell Phone:</div>
+				<div class="flex-1">
+					<input type="text" ng-model="cell" placeholder="Cell Phone">
+				</div>
+			</div>
+			<div class="mt10 flex">
+				<div class="input-label">Office Phone:</div>
+				<div class="flex-1">
+					<input type="text" ng-model="office_telephone" placeholder="Office Phone">
+				</div>
+			</div>
+			<div class="mt10 flex">
+				<div class="input-label">Reco Number:</div>
+				<div class="flex-1">
+					<input type="text" ng-model="reco_number" placeholder="Reco Number">
+				</div>
+			</div>
+			<div class="mt20 text-center">
+				<button ng-click="createUser()" class="btn btn-small btn-primary">Submit</button>
+			</div>
+		</form>
+	</div>
+</div>

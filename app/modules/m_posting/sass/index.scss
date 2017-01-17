@@ -1,0 +1,57 @@
+.posting-page{
+	.content-page{
+		overflow: hidden;
+		flex-direction: column;
+		height: auto;
+		.tab-item{
+			padding: .83333rem;
+	    	border-bottom: .08333rem solid #E6E6E6;
+		}
+		.top-section{
+			.tab-box .tab-header{
+				background: #78909C;
+				.tab-item{
+					transition: background 0.5s;
+					height: inherit;
+					line-height: inherit;
+					color: #fff;
+					&.active{
+						background: #384B54;
+						border-bottom: inherit;
+					}
+				}
+			}
+
+		}
+		.content-section{
+	    	overflow: auto;
+	    	.input-label{
+				width: px2rem(110px);
+				line-height: px2rem(40px);
+			}
+			.type-select{
+				margin: px2rem(10px) 0px;
+				border: 1px solid #BBBBBB;
+				padding: px2rem(2px) px2rem(10px);
+				border-radius: px2rem(4px);
+				&.active{
+					background-color: #384B54;
+					color: #fff;
+				}
+			}
+			select{
+				height: px2rem(40px);
+				width: 100%;
+				border-radius: px2rem(6px);
+				background: #fff;
+			}
+			button{
+			    width: 9.16667rem;
+			    margin: 0 auto;
+			}
+			.tab-list{
+				font-size: px2rem(10px);
+			}
+		}
+	}
+}

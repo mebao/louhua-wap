@@ -1,0 +1,51 @@
+.landscapeScroll-warp{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+	.landscapeScroll-containt{
+		&:after{
+			clear: both;
+			content: '';
+			display: block;
+		}
+		>div:not(:first-child){
+			opacity:0.0;
+			z-index: 0;
+		}
+		>div{
+			float:left;
+			width: 100%;
+			position: absolute;
+			z-index: 1;
+			transition: opacity 0.5s ease-out;
+		}
+	}
+	.landscapeScroll-pagination-bar{
+		width: 100%;
+	    height: 10%;
+	    min-height: px2rem(10px);
+	    position: relative;
+	    z-index: 1;
+	    top: 80%;
+	    display: flex;
+	    align-items: center;
+	    justify-content: flex-end;
+	    padding: 0 px2rem(10px);
+		span{
+			width: px2rem(10px);
+		    height: px2rem(10px);
+		    background: #fff;
+		    display: inline-block;
+		    border-radius: px2rem(5px);
+		    margin-left: px2rem(5px);
+		    transition: opacity 0.5s ease-out;
+		    &.land-pag-cur{
+		    	opacity:1.0;
+		    }
+		    &.land-pag-other{
+		    	opacity:0.5;
+		    }
+		}
+	}
+}

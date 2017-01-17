@@ -1,0 +1,9 @@
+.high-light-widget{
+	.high-light-text{
+		color:$color-ligth-text;
+	}
+	span{
+		text-align: left;
+		font-size: px2rem(map_get($map-font-size, m));
+	}
+}

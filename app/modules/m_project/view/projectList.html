@@ -1,0 +1,114 @@
+<div ng-controller="projectListCtrl" class="projectList-page">
+    <div class="popup-mask" ng-show="matchOk">
+        <div class="popup-section text-center">
+        	<img src="app/images/right.png" class="w100p">
+            <div class="pad10">match successful, our agent will contact with you shortly</div>
+        </div>
+    </div>
+	<div class="content-page flex">
+		<div class="top-section">
+			<div class="tab-box">
+				<div class="tab-header">
+					<div class="tab-item" ng-class="{'active': selectedTab==0}" ng-click="checkTab(0)">I Have</div>
+					<div class="tab-item" ng-class="{'active': selectedTab==1}" ng-click="checkTab(1)">I Want</div>
+				</div>
+			</div>
+		</div>
+		<div class="content-section flex-1">
+			<div class="section" ng-show="selectedTab==0">
+				<div class="flex tab-type">
+					<div class="flex-1">Unit Type</div>
+					<div class="flex-1">Exposur</div>
+					<div class="flex-1" ng-class="{'upDown': haveFloor==0, 'upArrow': haveFloor==1, 'downArrow': haveFloor==2}" ng-click="haveSort('floor', haveFloor)">Floor Lv</div>
+					<div class="flex-1" ng-class="{'upDown': havePrice==0, 'upArrow': havePrice==1, 'downArrow': havePrice==2}" ng-click="haveSort('price', havePrice)">Price</div>
+					<div class="flex-1" ng-class="{'upDown': haveCoop==0, 'upArrow': haveCoop==1, 'downArrow': haveCoop==2}" ng-click="haveSort('coop', haveCoop)">Coop</div>
+				</div>
+				<div class="tab-list">
+					<div ng-repeat="have in haveList">
+						<div class="tab-item flex" ng-click="checkHaveItem(have.id)">
+							<div class="w55p">
+								<img src="app/images/user_small.jpeg" class="w100 pr5">
+							</div>
+							<div class="flex-1">
+								<div class="flex pt5">
+									<div class="w70p flex">
+										<img src="app/images/bed.png" class="icon-bed">
+										type:{{have.type}}
+									</div>
+									<div class="flex-1 flex">
+										<img src="app/images/sun.png" class="icon-sun">
+										exposure:{{have.exposure}}
+									</div>
+									<div class="w70p flex">
+										<img src="app/images/balance.png" class="icon-balance">
+										coop:{{have.coop}}
+									</div>
+								</div>
+								<div class="flex pt10">
+									<div class="w70p flex">
+										<img src="app/images/floor.png" class="icon-floor">
+										floor:{{have.floor}}
+									</div>
+									<div class="flex">
+										<img src="app/images/dollar.png" class="icon-dollar">
+										price: {{have.price}}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="match" ng-show="have.id == selectedHaveItem" ng-click="match(have.id, 'have')">
+							Match
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section" ng-show="selectedTab==1">
+				<div class="flex tab-type">
+					<div class="flex-1">Unit Type</div>
+					<div class="flex-1">Exposur</div>
+					<div class="flex-1" ng-class="{'upDown': wantFloor==0, 'upArrow': wantFloor==1, 'downArrow': wantFloor==2}" ng-click="wantSort('floor', wantFloor)">Floor Lv</div>
+					<div class="flex-1" ng-class="{'upDown': wantPrice==0, 'upArrow': wantPrice==1, 'downArrow': wantPrice==2}" ng-click="wantSort('price', wantPrice)">Price</div>
+					<div class="flex-1" ng-class="{'upDown': wantCoop==0, 'upArrow': wantCoop==1, 'downArrow': wantCoop==2}" ng-click="wantSort('coop', wantCoop)">Coop</div>
+				</div>
+				<div class="tab-list">
+					<div ng-repeat="want in wantList">
+						<div class="tab-item flex" ng-click="checkWantItem(want.id)">
+							<div class="w55p">
+								<img src="app/images/user_small.jpeg" class="w100 pr5">
+							</div>
+							<div class="flex-1">
+								<div class="flex pt5">
+									<div class="w70p flex">
+										<img src="app/images/bed.png" class="icon-bed">
+										type:{{want.type}}
+									</div>
+									<div class="flex-1 flex">
+										<img src="app/images/sun.png" class="icon-sun">
+										exposure:{{want.exposure}}
+									</div>
+									<div class="w70p flex">
+										<img src="app/images/balance.png" class="icon-balance">
+										coop:{{want.coop}}
+									</div>
+								</div>
+								<div class="flex pt10">
+									<div class="w70p flex">
+										<img src="app/images/floor.png" class="icon-floor">
+										floor:{{want.floor}}
+									</div>
+									<div class="flex">
+										<img src="app/images/dollar.png" class="icon-dollar">
+										price: {{want.price}}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="match" ng-show="want.id == selectedWantItem" ng-click="match(want.id, 'want')">
+							Match
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

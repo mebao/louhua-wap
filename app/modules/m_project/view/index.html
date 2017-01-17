@@ -1,0 +1,120 @@
+<div ng-controller="projectCtrl" class="project-page">
+	<div class="showAll" ng-click="all()">
+		show all I have
+	</div>
+	<div class="content-page flex">
+		<div class="top-section">
+			<div class="total-tab flex">
+				<div class="left-tab">
+					<p>
+						<span class="p-label">total posts:</span>
+						<span class="c-white" ng-bind="project.totalPosts"></span>
+					</p>
+					<p>
+						<span class="p-label">average coop:</span>
+						<span class="c-white" ng-bind="project.averageCoop"></span>
+					</p>
+					<p>
+						<span class="p-label">1 bed:</span>
+						<span class="c-white" ng-bind="project[1]"></span>
+					</p>
+					<p>
+						<span class="p-label">1+1 bed:</span>
+						<span class="c-white" ng-bind="project[1+1]"></span>
+					</p>
+					<p>
+						<span class="p-label">2 beds:</span>
+						<span class="c-white" ng-bind="project[2]"></span>
+					</p>
+					<p>
+						<span class="p-label">2+1 beds:</span>
+						<span class="c-white" ng-bind="project[2+1]"></span>
+					</p>
+					<p>
+						<span class="p-label">3 beds:</span>
+						<span class="c-white" ng-bind="project[3]"></span>
+					</p>
+				</div>
+				<div class="flex-1"></div>
+			</div>
+			<div class="tab-box">
+				<div class="tab-header">
+					<div class="tab-item" ng-class="{'active': selectedTab==0}" ng-click="checkTab(0)">I Have</div>
+					<div class="tab-item" ng-class="{'active': selectedTab==1}" ng-click="checkTab(1)">I Want</div>
+				</div>
+			</div>
+		</div>
+		<div class="content-section flex-1">
+			<div class="section" ng-show="selectedTab==0">
+				<div class="tab-list">
+					<div class="tab-item flex" ng-repeat="post in postList">
+						<div class="w55p">
+							<img src="app/images/user_small.jpeg" class="w100 pr5">
+						</div>
+						<div class="flex-1">
+							<div class="flex pt5">
+								<div class="w70p flex">
+									<img src="app/images/bed.png" class="icon-bed">
+									type:{{post.type}}
+								</div>
+								<div class="flex-1 flex">
+									<img src="app/images/sun.png" class="icon-sun">
+									exposure:{{post.exposure}}
+								</div>
+								<div class="w70p flex">
+									<img src="app/images/balance.png" class="icon-balance">
+									coop:{{post.coop}}
+								</div>
+							</div>
+							<div class="flex pt10">
+								<div class="w70p flex">
+									<img src="app/images/floor.png" class="icon-floor">
+									floor:{{post.floor}}
+								</div>
+								<div class="flex">
+									<img src="app/images/dollar.png" class="icon-dollar">
+									price: {{post.price}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="section" ng-show="selectedTab==1">
+				<div class="tab-list">
+					<div class="tab-item flex" ng-repeat="want in wantList">
+						<div class="w55p">
+							<img src="app/images/user_small.jpeg" class="w100 pr5">
+						</div>
+						<div class="flex-1">
+							<div class="flex pt5">
+								<div class="w70p flex">
+									<img src="app/images/bed.png" class="icon-bed">
+									type:{{want.type}}
+								</div>
+								<div class="flex-1 flex">
+									<img src="app/images/sun.png" class="icon-sun">
+									exposure:{{want.exposure}}
+								</div>
+								<div class="w70p flex">
+									<img src="app/images/balance.png" class="icon-balance">
+									coop:{{want.coop}}
+								</div>
+							</div>
+							<div class="flex pt10">
+								<div class="w70p flex">
+									<img src="app/images/floor.png" class="icon-floor">
+									floor:{{want.floor}}
+								</div>
+								<div class="flex">
+									<img src="app/images/dollar.png" class="icon-dollar">
+									price: {{want.price}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

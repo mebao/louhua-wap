@@ -1,0 +1,7 @@
+@function px2rem ($px){
+    @return $px / 12px * 1rem;
+}
+
+@function px2multi ($px1, $px2, $px3, $px4){
+    @return $px1 / 12px * 1rem $px1 / 12px * 1rem $px1 / 12px * 1rem $px1 / 12px * 1rem;
+}

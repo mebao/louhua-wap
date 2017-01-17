@@ -1,0 +1,15 @@
+@import "../framework/sass/fn.scss";
+@import "../framework/sass/theme/<%=THEME_NAME%>/variables.scss";
+@import "c-variables.scss";
+
+//import your useful components' scss file.
+@import 'directive/header/header.scss';
+@import 'directive/footer/footer.scss';
+@import 'directive/tab/tab.scss';
+@import "directive/scroll/landscapeScroll.scss";
+@import "directive/highLight/highLigthWidget.scss";
+@import "directive/flex/flex.scss";
+@import "directive/calendar/calendar.scss";
+
+@import "provider/dialog/dialog.scss";
+@import "provider/uploadImg/uploadImg.scss";
