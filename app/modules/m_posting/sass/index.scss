@@ -44,6 +44,9 @@
 				width: 100%;
 				border-radius: px2rem(6px);
 				background: #fff;
+				appearance:none;
+				-moz-appearance:none;
+				-webkit-appearance:none;
 			}
 			button{
 			    width: 9.16667rem;

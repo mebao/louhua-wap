@@ -15,14 +15,14 @@
     var allEnvs = {
         product: {
             env:'product',
-            api_url: 'http://'
+            api_url: 'http://api.louhua.meb168.com'
         },
         localhost: {
             env:'localhost',
             api_url: 'http://192.168.10.107/xinlouhua'
         }
     };
-    var envs = allEnvs.localhost;//默认连接dev开发环境
+    var envs = allEnvs.product;//默认连接dev开发环境
     switch (window.location.host) {
         case 'm.mingyizhudao.com':
         {

@@ -1,7 +1,8 @@
 app.directive('footerWidget', function () {
     var ctrl = ['$scope', '$rootScope', 'StorageConfig', '$state', 'helper', 'CMSDataConfig', function ($scope, $rootScope, StorageConfig, $state, helper, CMSDataConfig) {
         var defaults = {
-            enableFooter: false
+            enableFooter: true,
+            enableCheckType: 1,
         };
         if(StorageConfig.FOOTER_STORAGE.getItem('show')){
             defaults.enableFooter=true;
@@ -14,7 +15,18 @@ app.directive('footerWidget', function () {
 
         $rootScope.$on('$locationChangeSuccess',function(){
             var currentHash = window.location.hash;
-            var menuList = CMSDataConfig.appMenus;
+            //login check type
+            var menuList = '';
+            if($scope.defaults.enableCheckType == 0){
+                menuList = CMSDataConfig.appMenus;
+            }else{
+                if(StorageConfig.TOKEN_STORAGE.getItem('username') && StorageConfig.TOKEN_STORAGE.getItem('token')){
+                    menuList = CMSDataConfig.loginMenus;
+                }else{
+                    menuList = CMSDataConfig.appMenus;
+                }
+            }
+            $scope.menuList = menuList;
             for (var i = menuList.length - 1; i >= 0; i--) {
                 if (currentHash.split('#')[1] === menuList[i].url) {
                     $scope.selectedIndex = i;
@@ -63,6 +75,6 @@ app.run(['$templateCache', function ($templateCache) {
     $templateCache.put('template/footer.html',
         '<footer class="layout-footer" id="layoutFooter" ng-show="defaults.enableFooter">\
         <div class="footer">\
-            <div class="item" ng-repeat="item in menuList" ng-click="selectItem(item, $index)"><span class="icon {{item.class}}" ng-class="{\'active\':$index == selectedIndex}"></span><span class="text" ng-class="{\'active\':$index == selectedIndex}" ng-bind="item.text"></span></div>\
+            <div class="item" ng-repeat="item in menuList" ng-click="selectItem(item, $index)"><span class="iconfont" ng-class="{false:item.class, true: item.class+\'fill active\'}[$index == footerSelectedIndex]"></span><span class="text" ng-class="{\'active\':$index == selectedIndex}" ng-bind="item.text"></span></div>\
         </div></footer>');
 }]);

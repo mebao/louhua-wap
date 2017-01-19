@@ -33,6 +33,12 @@ var frameworkPaths = {
     ]
 };
 
+var debugPaths = {
+    jsPath: [
+        'framework/js/debugLib/vconsole.min.js'
+    ]
+};
+
 var componentsPaths = {
     configJsPath: ['config/**/*.js'],
     directiveJsPath: ['components/directive/**/*.js'],
@@ -87,7 +93,7 @@ gulp.task('framework-sass-debug', function () {
  * 构建framework -js
  */
 gulp.task('framework-js', function () {
-    return gulp.src(frameworkPaths.jsPath)
+    return gulp.src(frameworkPaths.jsPath.concat(debugPaths.jsPath))
         .pipe(concat('framework.js'))
         .pipe(uglify())
         .pipe(gulp.dest('dist/framework/'));

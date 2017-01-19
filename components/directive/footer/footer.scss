@@ -15,6 +15,10 @@
         flex: 1;
         height: 100%;
         text-align: center;
+        border-right: 1px solid #BBBBBB;
+        &:last-child{
+            border-right: none;
+        }
         .icon{
             width: 22px;
             height: 22px;
@@ -22,41 +26,22 @@
             overflow: hidden;
             display: block;
         }
-        .icon-home{
-            background: url("http://static.mingyizhudao.com/146278206712060") no-repeat;
-            background-size: 94px 44px;
-            background-position: -2px -22px;
+        .iconfont{
+            display: block;
+            font-size: px2rem(22px);
+            color: #999;
             &.active{
-                background-position: -2px 0;
-            }
-
-        }
-        .icon-hospital{
-            background: url("http://static.mingyizhudao.com/146278206712060") no-repeat;
-            background-size: 94px 44px;
-            background-position: -24px -22px;
-            &.active{
-                background-position: -24px 0;
+                color: $brand-primary;
             }
         }
-        .icon-find{
-            background: url("http://static.mingyizhudao.com/146278206712060") no-repeat;
-            background-size: 94px 44px;
-            background-position: -47px -22px;
-            &.active{
-                background-position: -47px 0;
-            }
-
-        }
-        .icon-me{
-            background: url("http://static.mingyizhudao.com/146278206712060") no-repeat;
-            background-size: 94px 44px;
-            background-position: -70px -22px;
-            &.active{
-                background-position: -70px 0;
-            }
+        .icon-user{
+            background: url('../app/images/user.png') no-repeat;
+            height: 100%;
+            background-size: px2rem(30px);
+            background-position: 50% 50%;
         }
         .text{
+            line-height: px2rem($footer-height);
             color: #999;
             font-size: px2rem(map_get($map-font-size, s));
             &.active{

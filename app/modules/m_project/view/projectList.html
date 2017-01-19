@@ -15,7 +15,7 @@
 			</div>
 		</div>
 		<div class="content-section flex-1">
-			<div class="section" ng-show="selectedTab==0">
+			<div class="section flex" ng-show="selectedTab==0">
 				<div class="flex tab-type">
 					<div class="flex-1">Unit Type</div>
 					<div class="flex-1">Exposur</div>
@@ -23,7 +23,7 @@
 					<div class="flex-1" ng-class="{'upDown': havePrice==0, 'upArrow': havePrice==1, 'downArrow': havePrice==2}" ng-click="haveSort('price', havePrice)">Price</div>
 					<div class="flex-1" ng-class="{'upDown': haveCoop==0, 'upArrow': haveCoop==1, 'downArrow': haveCoop==2}" ng-click="haveSort('coop', haveCoop)">Coop</div>
 				</div>
-				<div class="tab-list">
+				<div class="tab-list flex-1">
 					<div ng-repeat="have in haveList">
 						<div class="tab-item flex" ng-click="checkHaveItem(have.id)">
 							<div class="w55p">
@@ -62,7 +62,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="section" ng-show="selectedTab==1">
+			<div class="section flex" ng-show="selectedTab==1">
 				<div class="flex tab-type">
 					<div class="flex-1">Unit Type</div>
 					<div class="flex-1">Exposur</div>
@@ -70,7 +70,7 @@
 					<div class="flex-1" ng-class="{'upDown': wantPrice==0, 'upArrow': wantPrice==1, 'downArrow': wantPrice==2}" ng-click="wantSort('price', wantPrice)">Price</div>
 					<div class="flex-1" ng-class="{'upDown': wantCoop==0, 'upArrow': wantCoop==1, 'downArrow': wantCoop==2}" ng-click="wantSort('coop', wantCoop)">Coop</div>
 				</div>
-				<div class="tab-list">
+				<div class="tab-list flex-1">
 					<div ng-repeat="want in wantList">
 						<div class="tab-item flex" ng-click="checkWantItem(want.id)">
 							<div class="w55p">

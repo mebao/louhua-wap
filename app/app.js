@@ -4,15 +4,30 @@ app.run(['$rootScope','StorageConfig','$state',function($rootScope,StorageConfig
 			document.getElementById('layoutContent').scrollTop=0;
 		}
 		if((toState.name=='layout.login') || (toState.name=='layout.register') || (toState.name=='layout.forgetpwd')) return;
-		if(toState.name.indexOf('cck')!=-1) return;
-		var username=StorageConfig.TOKEN_STORAGE.getItem('username');
-		var token=StorageConfig.TOKEN_STORAGE.getItem('token');
-		// if(!(username&&token)){
-		// 	event.preventDefault();
-		// 	StorageConfig.INTERCEPT_STORAGE.putItem('param',JSON.stringify(toParams));
-		// 	$state.go('layout.login',{
-		// 		from: toState.name
-		// 	})
-		// }
+		//need intercept
+		var urlList = [
+			'projectList',
+			'posting'
+		];
+
+		var intercept = false;
+        angular.forEach(urlList, function(url, index, array){
+            if(toState.name.indexOf(url) != -1){
+                intercept = true;
+            }
+        });
+
+        if(intercept){
+        	if(toState.name.indexOf('cck')!=-1) return;
+			var username=StorageConfig.TOKEN_STORAGE.getItem('username');
+			var token=StorageConfig.TOKEN_STORAGE.getItem('token');
+			if(!(username&&token)){
+				event.preventDefault();
+				StorageConfig.INTERCEPT_STORAGE.putItem('param',JSON.stringify(toParams));
+				$state.go('layout.login',{
+					from: toState.name
+				})
+			}
+        }
 	});
 }]);

@@ -6,7 +6,11 @@ app.controller('LayoutCtrl', ['$scope', '$rootScope', 'StorageConfig', '$state',
         window.footerConfig = {};
     }
 
-    $scope.menuList = CMSDataConfig.appMenus;
+    if(StorageConfig.TOKEN_STORAGE.getItem('username') && StorageConfig.TOKEN_STORAGE.getItem('token')){
+        $scope.menuList = CMSDataConfig.loginMenus;
+    }else{
+        $scope.menuList = CMSDataConfig.appMenus;
+    }
 
     $scope.orderListOptions = {
         //snap: 'li',

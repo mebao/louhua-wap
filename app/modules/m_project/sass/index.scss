@@ -3,9 +3,9 @@
 		position: absolute;
 		left: 0;
 		right: 0;
-		bottom: 0;
+		bottom: px2rem(50px);
 		z-index: 999;
-		background-color: #C8C8C8;
+		background-color: rgba(0,0,0,0.3);
 		color: #fff;
 		padding: px2rem(10px);
 		text-align: center;
@@ -126,10 +126,12 @@
 			}
 		}
 		.content-section{
-	    	overflow: auto;
+	    	overflow: hidden;
 	    	font-size: px2rem(10px);
 	    	.section{
 	    		transition: all 2s ease;
+				height: 100%;
+				flex-direction: column;
 	    		.tab-type{
 					font-size: px2rem(10px);
 					border-bottom: 1px solid #DEDEDE;
@@ -156,6 +158,9 @@
 						background-size: px2rem(10px);
 						background-position: 98% 50%;
 					}
+				}
+				.tab-list{
+	    			overflow: auto;
 				}
 	    	}
 			.match{

@@ -13,6 +13,14 @@ app.service('CommonService',['BaseHttpRequest',function(BaseHttpRequest){
 		return res;
 	}
 
+	function useraccountDto(res){
+		return res;
+	}
+
+	function wechatloginDto(res){
+		return res;
+	}
+
 	var service={
 		userregist: function(params){
 			var requestObj = {
@@ -33,6 +41,19 @@ app.service('CommonService',['BaseHttpRequest',function(BaseHttpRequest){
 				url: apiUrl + '/xlhapi/uploadtoken'
 			}
 			return BaseHttpRequest.get(requestObj, uploadtokenDto);
+		},
+		useraccount: function(params){
+			var requestObj = {
+				url: apiUrl + '/xlhapi/useraccount',
+				data: params
+			}
+			return BaseHttpRequest.post(requestObj, useraccountDto);
+		},
+		wechatlogin: function(){
+			var requestObj = {
+				url: apiUrl + '/xlhapi/wechatlogin'
+			}
+			return BaseHttpRequest.get(requestObj, wechatloginDto);
 		}
 	}
     return service;

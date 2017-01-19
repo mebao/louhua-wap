@@ -1,8 +1,8 @@
 app.factory('dialog', ['ngDialog', function (ngDialog) {
     return {
         alert: function (html, opts) {                 
-            var buttonText = (opts) ? opts.okText || '确定' : '确定';
-            var titleText = (opts) ? opts.title || '温馨提示' : '温馨提示';
+            var buttonText = (opts) ? opts.okText || 'confirm' : 'confirm';
+            var titleText = (opts) ? opts.title || 'reminder' : 'reminder';
             var options = {
                 overlay: true,
                 contentHtml: '<div class="dialog-body">\
@@ -15,9 +15,9 @@ app.factory('dialog', ['ngDialog', function (ngDialog) {
             return ngDialog.open(options);
         },
         confirm: function (html, opts) {
-            var okButtonText = (opts) ? opts.okText || '确定' : '确定';
-            var cancelButtonText = (opts) ? opts.cancelText || '取消' : '取消';
-            var titleText = (opts) ? opts.title || '温馨提示' : '温馨提示';
+            var okButtonText = (opts) ? opts.okText || 'confirm' : 'confirm';
+            var cancelButtonText = (opts) ? opts.cancelText || 'cancel' : 'cancel';
+            var titleText = (opts) ? opts.title || 'reminder' : 'reminder';
             var options = {
                 overlay: true,
                 contentHtml: '<div class="dialog-body">\
@@ -64,7 +64,7 @@ app.factory('dialog', ['ngDialog', function (ngDialog) {
             return ngDialog.open(options);
         },
         showSpinner: function (opts) {
-            var spinnerTip = (opts) ? (opts.spinnerTip || '加载中...') : '加载中...';
+            var spinnerTip = (opts) ? (opts.spinnerTip || 'loading...') : 'loading...';
             var options = {
                 overlay: true,
                 autoClose: true,
