@@ -47,6 +47,8 @@
 				appearance:none;
 				-moz-appearance:none;
 				-webkit-appearance:none;
+				padding: px2rem(10px);
+				font-size: px2rem(map_get($map-font-size, m)) * 0.8;
 			}
 			button{
 			    width: 9.16667rem;
