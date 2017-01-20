@@ -21,6 +21,10 @@ app.service('CommonService',['BaseHttpRequest',function(BaseHttpRequest){
 		return res;
 	}
 
+	function loginwxuserDto(res){
+		return res;
+	}
+
 	var service={
 		userregist: function(params){
 			var requestObj = {
@@ -54,6 +58,12 @@ app.service('CommonService',['BaseHttpRequest',function(BaseHttpRequest){
 				url: apiUrl + '/xlhapi/wechatlogin'
 			}
 			return BaseHttpRequest.get(requestObj, wechatloginDto);
+		},
+		loginwxuser: function(urlOptions){
+			var requestObj = {
+				url: apiUrl + '/xlhapi/loginwxuser?userid=' + urlOptions.userid
+			}
+			return BaseHttpRequest.get(requestObj, loginwxuserDto);
 		}
 	}
     return service;

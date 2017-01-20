@@ -1,4 +1,6 @@
 app.controller('loginCtrl',['$scope', 'CommonService', 'dialog', '$stateParams', '$state', 'StorageConfig', '$timeout', '$rootScope', function($scope, CommonService, dialog, $stateParams, $state, StorageConfig, $timeout, $rootScope){
+	var apiUrl = window.envs.api_url;
+
 	$scope.goRouter = function(_url){
 		$state.go(_url)
 	}
@@ -33,26 +35,29 @@ app.controller('loginCtrl',['$scope', 'CommonService', 'dialog', '$stateParams',
 	}
 
 	$scope.wechatLogin = function(){
-		var spinner = dialog.showSpinner();
-		CommonService.wechatlogin().then(function(res){
-			dialog.closeSpinner(spinner.id);
-			StorageConfig.TOKEN_STORAGE.putItem('username', $scope.username);
-			StorageConfig.TOKEN_STORAGE.putItem('token', res.results.userinfo.token);
-			if(res.results.userinfo.isAccount == '1'){
-				$state.go('layout.account', {
-					id: res.results.userinfo.id,
-					accountId: res.results.userinfo.accountId
-				});
-			}else{
-				if($stateParams.from == undefined){
-					$state.go('layout.project');
-				}else{
-					$state.go($stateParams.from);
-				}
-			}
-		},function(res){
-			dialog.closeSpinner(spinner.id);
-			dialog.alert(res.errorMsg);
-		});
+		window.location.href = apiUrl + '/xlhapi/wechatuser';
+
+		// var spinner = dialog.showSpinner();
+		// CommonService.wechatlogin().then(function(res){
+		// 	dialog.closeSpinner(spinner.id);
+		// 	StorageConfig.TOKEN_STORAGE.putItem('username', $scope.username);
+		// 	StorageConfig.TOKEN_STORAGE.putItem('token', res.results.userinfo.token);
+		// 	if(res.results.userinfo.isAccount == '1'){
+		// 		$state.go('layout.account', {
+		// 			id: res.results.userinfo.id,
+		// 			accountId: res.results.userinfo.accountId,
+		// 			from: $stateParams.from
+		// 		});
+		// 	}else{
+		// 		if($stateParams.from == undefined){
+		// 			$state.go('layout.project');
+		// 		}else{
+		// 			$state.go($stateParams.from);
+		// 		}
+		// 	}
+		// },function(res){
+		// 	dialog.closeSpinner(spinner.id);
+		// 	dialog.alert(res.errorMsg);
+		// });
 	}
 }]);

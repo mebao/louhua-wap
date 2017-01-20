@@ -24,7 +24,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                     templateUrl: 'app/modules/m_login/view/register.html'
                 })
                 .state('layout.account', {
-                    url: '/account',
+                    url: '/account?id&accountId',
                     templateUrl: 'app/modules/m_login/view/account.html'
                 })
                 .state('layout.project', {
@@ -38,6 +38,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                 .state('layout.posting', {
                     url: '/posting',
                     templateUrl: 'app/modules/m_posting/view/index.html'
+                })
+                .state('layout.wechatlogin', {
+                    url: '/wechatlogin?userid',
+                    templateUrl: 'app/modules/m_login/view/wechatlogin.html'
                 })
 
     }]);

@@ -35,7 +35,7 @@ var frameworkPaths = {
 
 var debugPaths = {
     jsPath: [
-        'framework/js/debugLib/vconsole.min.js'
+        // 'framework/js/debugLib/vconsole.min.js'
     ]
 };
 

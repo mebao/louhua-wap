@@ -1,4 +1,4 @@
-app.controller('accountCtrl', ['$scope', 'dialog', 'CommonService', '$timeout', function($scope, dialog, CommonService, $timeout){
+app.controller('accountCtrl', ['$scope', 'dialog', 'CommonService', '$timeout', '$stateParams', '$state', function($scope, dialog, CommonService, $timeout, $stateParams, $state){
     $scope.errorMsg = false;
 	$scope.subscribe = 'no';
 	
@@ -6,8 +6,7 @@ app.controller('accountCtrl', ['$scope', 'dialog', 'CommonService', '$timeout', 
 		$scope.subscribe = ($scope.subscribe == 'no' ? 'yes' : 'no');
 	}
 
-    $scope.accountId = '0123';
-    $scope.id = 10;
+    $scope.accountId = $stateParams.accountId;
 
     $scope.account = function(){
         if($scope.wechat_id == undefined || $scope.real_name == undefined || $scope.brokerage_name == undefined || $scope.cell == undefined || $scope.office_telephone == undefined || $scope.reco_number == undefined){
@@ -19,7 +18,7 @@ app.controller('accountCtrl', ['$scope', 'dialog', 'CommonService', '$timeout', 
         }
         var spinner = dialog.showSpinner();
         var req = {
-            user_id: $scope.id,
+            user_id: $stateParams.id,
             wechat_id: $scope.wechat_id,
             real_name: $scope.real_name,
             brokerage_name: $scope.brokerage_name,
@@ -30,6 +29,7 @@ app.controller('accountCtrl', ['$scope', 'dialog', 'CommonService', '$timeout', 
         }
         CommonService.useraccount(req).then(function(res){
             dialog.closeSpinner(spinner.id);
+            $state.go('layout.project');
         },function(res){
             dialog.closeSpinner(spinner.id);
             dialog.alert(res.errorMsg);
