@@ -7,7 +7,26 @@ app.controller('loginCtrl',['$scope', 'CommonService', 'dialog', '$stateParams',
 
 	$scope.errorMsg = false;
 	$scope.login = function(){
-		if($scope.username == undefined || $scope.password == undefined){
+		if($scope.username == undefined || $scope.username.replace(/\s+/g, "") == ''){
+            $scope.errorTip = 'this Email must input';
+			$scope.errorMsg = true;
+			$timeout(function(){
+				$scope.errorMsg = false;
+			},2000);
+			return false;
+		}
+        //验证邮箱格式
+        var usernameType = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+        if(!$scope.username.match(usernameType)){
+            $scope.errorTip = 'this email format error';
+            $scope.errorMsg = true;
+            $timeout(function(){
+                $scope.errorMsg = false;
+            },2000);
+            return false;
+        }
+		if($scope.password == undefined || $scope.password.replace(/\s+/g, "") == ''){
+            $scope.errorTip = 'this Passowrd must input';
 			$scope.errorMsg = true;
 			$timeout(function(){
 				$scope.errorMsg = false;

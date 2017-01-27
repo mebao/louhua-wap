@@ -1,6 +1,9 @@
 <div ng-controller="projectCtrl" class="project-page">
-	<div class="showAll" ng-click="all()">
+	<div class="showAll" ng-click="all()" ng-show="selectedTab==0">
 		show all I have
+	</div>
+	<div class="showAll" ng-click="all()" ng-show="selectedTab==1">
+		show all I want
 	</div>
 	<div class="content-page flex">
 		<div class="top-section">
@@ -15,24 +18,28 @@
 						<span class="c-white" ng-bind="project.averageCoop"></span>
 					</p>
 					<p>
+						<span class="p-label">studio:</span>
+						<span class="c-white" ng-bind="project.studio"></span>
+					</p>
+					<p>
 						<span class="p-label">1 bed:</span>
-						<span class="c-white" ng-bind="project[1]"></span>
+						<span class="c-white" ng-bind="project.one"></span>
 					</p>
 					<p>
 						<span class="p-label">1+1 bed:</span>
-						<span class="c-white" ng-bind="project[1+1]"></span>
+						<span class="c-white" ng-bind="project.oneandone"></span>
 					</p>
 					<p>
 						<span class="p-label">2 beds:</span>
-						<span class="c-white" ng-bind="project[2]"></span>
+						<span class="c-white" ng-bind="project.two"></span>
 					</p>
 					<p>
 						<span class="p-label">2+1 beds:</span>
-						<span class="c-white" ng-bind="project[2+1]"></span>
+						<span class="c-white" ng-bind="project.twoandone"></span>
 					</p>
 					<p>
 						<span class="p-label">3 beds:</span>
-						<span class="c-white" ng-bind="project[3]"></span>
+						<span class="c-white" ng-bind="project.three"></span>
 					</p>
 				</div>
 				<div class="flex-1"></div>
@@ -53,7 +60,7 @@
 						</div>
 						<div class="flex-1">
 							<div class="flex pt5">
-								<div class="w70p flex">
+								<div class="w80p flex">
 									<img src="app/images/bed.png" class="icon-bed">
 									type:{{post.type}}
 								</div>
@@ -67,7 +74,7 @@
 								</div>
 							</div>
 							<div class="flex pt10">
-								<div class="w70p flex">
+								<div class="w80p flex">
 									<img src="app/images/floor.png" class="icon-floor">
 									floor:{{post.floor}}
 								</div>
@@ -88,7 +95,7 @@
 						</div>
 						<div class="flex-1">
 							<div class="flex pt5">
-								<div class="w70p flex">
+								<div class="w80p flex">
 									<img src="app/images/bed.png" class="icon-bed">
 									type:{{want.type}}
 								</div>
@@ -102,7 +109,7 @@
 								</div>
 							</div>
 							<div class="flex pt10">
-								<div class="w70p flex">
+								<div class="w80p flex">
 									<img src="app/images/floor.png" class="icon-floor">
 									floor:{{want.floor}}
 								</div>

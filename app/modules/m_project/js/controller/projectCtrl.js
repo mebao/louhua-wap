@@ -7,6 +7,7 @@ app.controller('projectCtrl', ['$scope', 'projectService', 'dialog', 'StorageCon
 	}else{
 		$scope.selectedTab = 0;
 	}
+
 	$scope.checkTab = function(_index){
 		if((_index == 0) || (username_storage && token_storage)){
 			$scope.selectedTab = _index;
@@ -43,6 +44,8 @@ app.controller('projectCtrl', ['$scope', 'projectService', 'dialog', 'StorageCon
 	}
 
 	$scope.all = function(){
+		//存储进入projectlist的路径
+		StorageConfig.PROJECT_STORAGE.putItem('listTab', $scope.selectedTab);
 		if(username_storage && token_storage){
 			$state.go('layout.projectList');
 		}else{

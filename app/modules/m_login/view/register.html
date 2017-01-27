@@ -1,11 +1,11 @@
 <div ng-controller="registerCtrl" class="register-page">
 	<div class="popup-mask" ng-show="errorMsg">
         <div class="popup-section text-center">
-            <div class="pad10 mt60">Please complete all option before submitting</div>
+            <div class="pad10 mt60" ng-bind="errorTip"></div>
         </div>
     </div>
 	<div class="content-page pad20">
-		<form name="registerName">
+		<form name="registerName" >
 			<div class="text-center">
 				<img src="app/images/user.png" class="w110p">
 			</div>
@@ -13,7 +13,7 @@
 				<input type="text" ng-model="username" placeholder="Email" class="text-center">
 			</div>
 			<div class="mt10">
-				<input type="password" ng-model="password_raw" placeholder="Password" class="text-center">
+				<input type="password" maxlength="16" ng-model="password_raw" placeholder="Password" class="text-center">
 			</div>
 			<div class="mt10 flex">
 				<div class="input-label">WeChat ID:</div>

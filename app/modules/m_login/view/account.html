@@ -1,7 +1,7 @@
 <div ng-controller="accountCtrl" class="account-page">
 	<div class="popup-mask" ng-show="errorMsg">
         <div class="popup-section text-center">
-            <div class="pad10 mt60">Please complete all option before submitting</div>
+            <div class="pad10 mt60" ng-bind="errorTip"></div>
         </div>
     </div>
 	<div class="content-page pad20">

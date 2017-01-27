@@ -108,3 +108,12 @@
 		margin: 0 auto;
 	}
 }
+.wechatlogin-page{
+	.tip{
+		padding: px2rem(60px) px2rem(20px) 0;
+		font-size: px2rem(map_get($map-font-size, m));
+	}
+	.loading{
+		font-size: px2rem(map_get($map-font-size, m)) * 2;
+	}
+}

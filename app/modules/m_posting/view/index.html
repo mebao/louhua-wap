@@ -1,15 +1,15 @@
 <div ng-controller="postingCtrl" class="posting-page">
 	<div class="popup-mask" ng-show="errorMsg">
         <div class="popup-section text-center">
-            <div class="pad10 mt60">Please complete all option before submitting</div>
+            <div class="pad10 mt60" ng-bind="errorTip"></div>
         </div>
     </div>
 	<div class="content-page flex">
 		<div class="top-section">
 			<div class="tab-box">
 				<div class="tab-header">
-					<div class="tab-item" ng-class="{'active': selectedTab==0}" ng-click="checkTab(0)">I Have</div>
-					<div class="tab-item" ng-class="{'active': selectedTab==1}" ng-click="checkTab(1)">I Want</div>
+					<div class="tab-item" ng-class="{'active': selectedTab==0}" ng-click="checkTab(0)">New Post</div>
+					<div class="tab-item" ng-class="{'active': selectedTab==1}" ng-click="checkTab(1)">My Post</div>
 				</div>
 			</div>
 		</div>
@@ -52,31 +52,31 @@
 						<div class="mt10 flex" ng-show="selectedType=='have'">
 							<div class="input-label">Floor Level:</div>
 							<div class="flex-1">
-								<input type="text" ng-model="floor_level" placeholder="Floor Level">
+								<input type="tel" ng-model="floor_level" maxlength="4" placeholder="Floor Level">
 							</div>
 						</div>
 						<div class="mt10 flex" ng-show="selectedType=='want'">
 							<div class="input-label">Floor low:</div>
 							<div class="flex-1">
-								<input type="text" ng-model="expect_floor_low" placeholder="Floor low">
+								<input type="tel" ng-model="expect_floor_low" maxlength="4" placeholder="Floor low">
 							</div>
 						</div>
 						<div class="mt10 flex" ng-show="selectedType=='want'">
 							<div class="input-label">Floor high:</div>
 							<div class="flex-1">
-								<input type="text" ng-model="expect_floor_high" placeholder="Floor high">
+								<input type="tel" ng-model="expect_floor_high" maxlength="4" placeholder="Floor high">
 							</div>
 						</div>
 						<div class="mt10 flex">
 							<div class="input-label">Price:</div>
 							<div class="flex-1">
-								<input type="text" ng-model="price" placeholder="Price">
+								<input type="number" ng-model="price" placeholder="Price">
 							</div>
 						</div>
 						<div class="mt10 flex">
 							<div class="input-label">Prefer Coop:</div>
 							<div class="flex-1">
-								<input type="text" ng-model="coop" placeholder="Prefer Coop">
+								<input type="number" ng-model="coop" placeholder="Prefer Coop">
 							</div>
 						</div>
 						<div class="btn-dock mt20">
@@ -94,7 +94,7 @@
 							</div>
 							<div class="flex-1">
 								<div class="flex pt5">
-									<div class="w70p flex">
+									<div class="w80p flex">
 										<img src="app/images/bed.png" class="icon-bed">
 										type:{{post.type}}
 									</div>
@@ -108,7 +108,7 @@
 									</div>
 								</div>
 								<div class="flex pt10">
-									<div class="w70p flex">
+									<div class="w80p flex">
 										<img src="app/images/floor.png" class="icon-floor">
 										floor:{{post.floor}}
 									</div>

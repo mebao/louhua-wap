@@ -1,8 +1,13 @@
 app.controller('projectListCtrl', ['$scope', 'projectService', 'StorageConfig', 'dialog', '$timeout', function($scope, projectService, StorageConfig, dialog, $timeout){
 	$scope.matchOk = false;
-	$scope.selectedTab = 0;
+	if(StorageConfig.PROJECT_STORAGE.getItem('listTab')){
+		$scope.selectedTab = StorageConfig.PROJECT_STORAGE.getItem('listTab');
+	}else{
+		$scope.selectedTab = 0;
+	}
 	$scope.checkTab = function(_index){
 		$scope.selectedTab = _index;
+		StorageConfig.PROJECT_STORAGE.putItem('listTab', _index);
 	}
 
 	getData();

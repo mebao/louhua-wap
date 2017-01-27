@@ -9,7 +9,48 @@ app.controller('accountCtrl', ['$scope', 'dialog', 'CommonService', '$timeout', 
     $scope.accountId = $stateParams.accountId;
 
     $scope.account = function(){
-        if($scope.wechat_id == undefined || $scope.real_name == undefined || $scope.brokerage_name == undefined || $scope.cell == undefined || $scope.office_telephone == undefined || $scope.reco_number == undefined){
+        if($scope.wechat_id == undefined || $scope.wechat_id.replace(/\s+/g, "") == ''){
+            $scope.errorTip = 'this Wechat ID must input';
+            $scope.errorMsg = true;
+            $timeout(function(){
+                $scope.errorMsg = false;
+            },2000);
+            return false;
+        }
+        if($scope.real_name == undefined || $scope.real_name.replace(/\s+/g, "") == ''){
+            $scope.errorTip = 'this Full Name must input';
+            $scope.errorMsg = true;
+            $timeout(function(){
+                $scope.errorMsg = false;
+            },2000);
+            return false;
+        }
+        if($scope.brokerage_name == undefined || $scope.brokerage_name.replace(/\s+/g, "") == ''){
+            $scope.errorTip = 'this Company must input';
+            $scope.errorMsg = true;
+            $timeout(function(){
+                $scope.errorMsg = false;
+            },2000);
+            return false;
+        }
+        if($scope.cell == undefined || $scope.cell.replace(/\s+/g, "") == ''){
+            $scope.errorTip = 'this Cell Phone must input';
+            $scope.errorMsg = true;
+            $timeout(function(){
+                $scope.errorMsg = false;
+            },2000);
+            return false;
+        }
+        if($scope.office_telephone == undefined || $scope.office_telephone.replace(/\s+/g, "") == ''){
+            $scope.errorTip = 'this Office Phone must input';
+            $scope.errorMsg = true;
+            $timeout(function(){
+                $scope.errorMsg = false;
+            },2000);
+            return false;
+        }
+        if($scope.reco_number == undefined || $scope.reco_number.replace(/\s+/g, "") == ''){
+            $scope.errorTip = 'this Reco Number must input';
             $scope.errorMsg = true;
             $timeout(function(){
                 $scope.errorMsg = false;
