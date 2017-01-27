@@ -26,13 +26,13 @@ app.service('projectService', ['BaseHttpRequest', function(BaseHttpRequest){
 		},
 		orderwantlist: function(urlOptions){
 			var requestObj = {
-				url: apiUrl + '/xlhapi/orderwantlist?username=' + urlOptions.username + '&token=' + urlOptions.token
+				url: apiUrl + '/xlhapi/orderwantlist?username=' + urlOptions.username + '&token=' + urlOptions.token + (urlOptions.wantUnitType ? ('&unit_type=' + urlOptions.wantUnitType) : '') + (urlOptions.wantExposure ? ('&exposure=' + urlOptions.wantExposure) : '')
 			}
 			return BaseHttpRequest.get(requestObj, orderwantlistDto);
 		},
 		orderhavelist: function(urlOptions){
 			var requestObj = {
-				url: apiUrl + '/xlhapi/orderhavelist?username=' + urlOptions.username + '&token=' + urlOptions.token
+				url: apiUrl + '/xlhapi/orderhavelist?username=' + urlOptions.username + '&token=' + urlOptions.token + (urlOptions.haveUnitType ? ('&unit_type=' + urlOptions.haveUnitType) : '') + (urlOptions.haveExposure ? ('&exposure=' + urlOptions.haveExposure) : '')
 			}
 			return BaseHttpRequest.get(requestObj, orderhavelistDto);
 		},

@@ -17,11 +17,21 @@
 		<div class="content-section flex-1">
 			<div class="section flex" ng-show="selectedTab==0">
 				<div class="flex tab-type">
-					<div class="flex-1">Unit Type</div>
-					<div class="flex-1">Exposur</div>
+					<div class="flex-1" ng-click="checkHaveUnitType()">Unit Type</div>
+					<div class="flex-1" ng-click="checkHaveExposure()">Exposure</div>
 					<div class="flex-1" ng-class="{'upDown': haveFloor==0, 'upArrow': haveFloor==1, 'downArrow': haveFloor==2}" ng-click="haveSort('floor', haveFloor)">Floor Lv</div>
 					<div class="flex-1" ng-class="{'upDown': havePrice==0, 'upArrow': havePrice==1, 'downArrow': havePrice==2}" ng-click="haveSort('price', havePrice)">Price</div>
 					<div class="flex-1" ng-class="{'upDown': haveCoop==0, 'upArrow': haveCoop==1, 'downArrow': haveCoop==2}" ng-click="haveSort('coop', haveCoop)">Coop</div>
+				</div>
+				<div class="select-mask" ng-show="haveUnitType">
+					<div class="select-list">
+						<div class="select-item" ng-repeat="(key, value) in optionsUnitType" ng-bind="key" ng-click="havelistData('unitType', key)"></div>
+					</div>
+				</div>
+				<div class="select-mask" ng-show="haveExposure">
+					<div class="select-list">
+						<div class="select-item" ng-repeat="(key, value) in optionsExposure" ng-bind="key" ng-click="havelistData('exposur', key)"></div>
+					</div>
 				</div>
 				<div class="tab-list flex-1">
 					<div ng-repeat="have in haveList">
@@ -64,11 +74,21 @@
 			</div>
 			<div class="section flex" ng-show="selectedTab==1">
 				<div class="flex tab-type">
-					<div class="flex-1">Unit Type</div>
-					<div class="flex-1">Exposur</div>
+					<div class="flex-1" ng-click="checkWantUnitType()">Unit Type</div>
+					<div class="flex-1" ng-click="checkWantExposure()">Exposure</div>
 					<div class="flex-1" ng-class="{'upDown': wantFloor==0, 'upArrow': wantFloor==1, 'downArrow': wantFloor==2}" ng-click="wantSort('floor', wantFloor)">Floor Lv</div>
 					<div class="flex-1" ng-class="{'upDown': wantPrice==0, 'upArrow': wantPrice==1, 'downArrow': wantPrice==2}" ng-click="wantSort('price', wantPrice)">Price</div>
 					<div class="flex-1" ng-class="{'upDown': wantCoop==0, 'upArrow': wantCoop==1, 'downArrow': wantCoop==2}" ng-click="wantSort('coop', wantCoop)">Coop</div>
+				</div>
+				<div class="select-mask" ng-show="wantUnitType">
+					<div class="select-list">
+						<div class="select-item" ng-repeat="(key, value) in optionsUnitType" ng-bind="key" ng-click="wantlistData('unitType', key)"></div>
+					</div>
+				</div>
+				<div class="select-mask" ng-show="wantExposure">
+					<div class="select-list">
+						<div class="select-item" ng-repeat="(key, value) in optionsExposure" ng-bind="key" ng-click="wantlistData('exposur', key)"></div>
+					</div>
 				</div>
 				<div class="tab-list flex-1">
 					<div ng-repeat="want in wantList">

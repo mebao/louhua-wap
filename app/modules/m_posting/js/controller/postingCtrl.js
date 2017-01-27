@@ -12,7 +12,7 @@ app.controller('postingCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog
 
 	$scope.errorMsg = false;
 	$scope.createPost = function(){
-        if($scope.project == undefined || $scope.project.replace(/\s+/g, "") == ''){
+        if($scope.project == undefined){
             $scope.errorTip = 'this Project must select';
             $scope.errorMsg = true;
             $timeout(function(){
@@ -68,7 +68,7 @@ app.controller('postingCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog
             },2000);
             return false;
         }
-        if($scope.price == undefined || $scope.price.replace(/\s+/g, "") == ''){
+        if($scope.price == undefined || $scope.price.toString().replace(/\s+/g, "") == ''){
             $scope.errorTip = 'this Price must input';
             $scope.errorMsg = true;
             $timeout(function(){
@@ -84,7 +84,7 @@ app.controller('postingCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog
             },2000);
             return false;
         }
-        if($scope.coop == undefined || $scope.coop.replace(/\s+/g, "") == ''){
+        if($scope.coop == undefined || $scope.coop.toString().replace(/\s+/g, "") == ''){
             $scope.errorTip = 'this Prefer Coop must input';
             $scope.errorMsg = true;
             $timeout(function(){
@@ -92,8 +92,8 @@ app.controller('postingCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog
             },2000);
             return false;
         }
-        if($scope.coop > 100000000){
-        	$scope.errorTip = 'this Prefer Coop not more than 8 length';
+        if($scope.coop > 100){
+        	$scope.errorTip = 'this Prefer Coop not more than 4 length';
             $scope.errorMsg = true;
             $timeout(function(){
                 $scope.errorMsg = false;

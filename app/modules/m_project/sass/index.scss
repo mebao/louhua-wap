@@ -159,6 +159,18 @@
 						background-position: 98% 50%;
 					}
 				}
+				.select-mask{
+					background-color: rgba(0,0,0,0.3);
+					height: 100%;
+					.select-list{
+						background-color: #fff;
+						font-size: px2rem(12px);
+						.select-item{
+							padding: px2rem(10px);
+							border-bottom: 1px solid #E6E6E6;
+						}
+					}
+				}
 				.tab-list{
 	    			overflow: auto;
 				}

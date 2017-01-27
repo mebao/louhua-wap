@@ -1,4 +1,4 @@
-app.controller('projectListCtrl', ['$scope', 'projectService', 'StorageConfig', 'dialog', '$timeout', function($scope, projectService, StorageConfig, dialog, $timeout){
+app.controller('projectListCtrl', ['$scope', 'projectService', 'StorageConfig', 'dialog', '$timeout', 'postService', function($scope, projectService, StorageConfig, dialog, $timeout, postService){
 	$scope.matchOk = false;
 	if(StorageConfig.PROJECT_STORAGE.getItem('listTab')){
 		$scope.selectedTab = StorageConfig.PROJECT_STORAGE.getItem('listTab');
@@ -10,14 +10,27 @@ app.controller('projectListCtrl', ['$scope', 'projectService', 'StorageConfig', 
 		StorageConfig.PROJECT_STORAGE.putItem('listTab', _index);
 	}
 
+
+	var req = {
+		username: StorageConfig.TOKEN_STORAGE.getItem('username'),
+		token: StorageConfig.TOKEN_STORAGE.getItem('token'),
+	}
 	getData();
 
 	function getData(){
 		var spinner = dialog.showSpinner();
-		var req = {
-			username: StorageConfig.TOKEN_STORAGE.getItem('username'),
-			token: StorageConfig.TOKEN_STORAGE.getItem('token'),
-		}
+		getHavelistData(spinner);
+		getWantlistData();
+		//获取筛选条件
+		postService.selectoptions().then(function(res){
+			$scope.optionsExposure = res.results.optionsExposure;
+			$scope.optionsUnitType = res.results.optionsUnitType;
+		},function(res){
+
+		});
+	}
+
+	function getHavelistData(spinner){
 		projectService.orderhavelist(req).then(function(res){
 			dialog.closeSpinner(spinner.id);
 			$scope.haveListStorage = res.results.postList;
@@ -26,11 +39,19 @@ app.controller('projectListCtrl', ['$scope', 'projectService', 'StorageConfig', 
 			dialog.closeSpinner(spinner.id);
 			dialog.alert(res.errorMsg);
 		});
+	}
+
+	function getWantlistData(spinner){
 		projectService.orderwantlist(req).then(function(res){
+			if(spinner != null){
+				dialog.closeSpinner(spinner.id);
+			}
 			$scope.wantListStorage = res.results.postList;
 			$scope.wantList = arrayCopy(res.results.postList);
 		},function(res){
-
+			if(spinner != null){
+				dialog.closeSpinner(spinner.id);
+			}
 		});
 	}
 
@@ -40,6 +61,54 @@ app.controller('projectListCtrl', ['$scope', 'projectService', 'StorageConfig', 
 
 	$scope.checkWantItem = function(_index){
 		$scope.selectedWantItem = _index;
+	}
+
+	//have unit type
+	$scope.haveUnitType = false;
+	$scope.checkHaveUnitType = function(){
+		$scope.haveUnitType = !$scope.haveUnitType;
+	}
+	//have exposur
+	$scope.haveExposure = false;
+	$scope.checkHaveExposure = function(){
+		$scope.haveExposure = !$scope.haveExposure;
+	}
+
+	$scope.havelistData = function(_type, data){
+		if(_type == 'unitType'){
+			req.haveUnitType = data;
+			req.haveExposure = undefined;
+			$scope.haveUnitType = !$scope.haveUnitType;
+		}else{
+			req.haveExposure = data;
+			$scope.haveExposure = !$scope.haveExposure;
+		}
+		var spinner = dialog.showSpinner();
+		getHavelistData(spinner);
+	}
+
+	//want unit type
+	$scope.wantUnitType = false;
+	$scope.checkWantUnitType = function(){
+		$scope.wantUnitType = !$scope.wantUnitType;
+	}
+	//want exposur
+	$scope.wantExposure = false;
+	$scope.checkWantExposure = function(){
+		$scope.wantExposure = !$scope.wantExposure;
+	}
+
+	$scope.wantlistData = function(_type, data){
+		if(_type == 'unitType'){
+			req.wantUnitType = data;
+			req.wantExposure = undefined;
+			$scope.wantUnitType = !$scope.wantUnitType;
+		}else{
+			req.wantExposure = data;
+			$scope.wantExposure = !$scope.wantExposure;
+		}
+		var spinner = dialog.showSpinner();
+		getWantlistData(spinner);
 	}
 
 	$scope.match = function(_id, _type){
