@@ -66,11 +66,13 @@ app.controller('projectListCtrl', ['$scope', 'projectService', 'StorageConfig', 
 	//have unit type
 	$scope.haveUnitType = false;
 	$scope.checkHaveUnitType = function(){
+		$scope.haveExposure = false;
 		$scope.haveUnitType = !$scope.haveUnitType;
 	}
 	//have exposur
 	$scope.haveExposure = false;
 	$scope.checkHaveExposure = function(){
+		$scope.haveUnitType = false;
 		$scope.haveExposure = !$scope.haveExposure;
 	}
 
@@ -90,11 +92,13 @@ app.controller('projectListCtrl', ['$scope', 'projectService', 'StorageConfig', 
 	//want unit type
 	$scope.wantUnitType = false;
 	$scope.checkWantUnitType = function(){
+		$scope.wantExposure = false;
 		$scope.wantUnitType = !$scope.wantUnitType;
 	}
 	//want exposur
 	$scope.wantExposure = false;
 	$scope.checkWantExposure = function(){
+		$scope.wantUnitType = false;
 		$scope.wantExposure = !$scope.wantExposure;
 	}
 

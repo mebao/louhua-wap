@@ -161,7 +161,13 @@
 				}
 				.select-mask{
 					background-color: rgba(0,0,0,0.3);
-					height: 100%;
+					height: auto;
+					position: absolute;
+					top: px2rem(90px);
+					left: 0;
+					right: 0;
+					bottom: 0;
+					z-index: 9;
 					.select-list{
 						background-color: #fff;
 						font-size: px2rem(12px);
