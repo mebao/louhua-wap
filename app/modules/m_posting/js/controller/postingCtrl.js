@@ -169,7 +169,7 @@ app.controller('postingCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog
 		return array;
 	}
 
-	$scope.delet = function(_post){
+	$scope.delete = function(_post){
 		dialog.confirm('Delet Post', {
 			closeCallback: function(value){
 				if(value == 0 ){

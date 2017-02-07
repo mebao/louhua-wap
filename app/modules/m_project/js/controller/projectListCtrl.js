@@ -78,11 +78,19 @@ app.controller('projectListCtrl', ['$scope', 'projectService', 'StorageConfig', 
 
 	$scope.havelistData = function(_type, data){
 		if(_type == 'unitType'){
-			req.haveUnitType = data;
+			if(data == 'all'){
+				req.haveUnitType = undefined;
+			}else{
+				req.haveUnitType = data;
+			}
 			req.haveExposure = undefined;
 			$scope.haveUnitType = !$scope.haveUnitType;
 		}else{
-			req.haveExposure = data;
+			if(data == 'all'){
+				req.haveExposure = undefined;
+			}else{
+				req.haveExposure = data;
+			}
 			$scope.haveExposure = !$scope.haveExposure;
 		}
 		var spinner = dialog.showSpinner();
@@ -104,11 +112,19 @@ app.controller('projectListCtrl', ['$scope', 'projectService', 'StorageConfig', 
 
 	$scope.wantlistData = function(_type, data){
 		if(_type == 'unitType'){
-			req.wantUnitType = data;
+			if(data == 'all'){
+				req.wantUnitType = undefined;
+			}else{
+				req.wantUnitType = data;
+			}
 			req.wantExposure = undefined;
 			$scope.wantUnitType = !$scope.wantUnitType;
 		}else{
-			req.wantExposure = data;
+			if(data == 'all'){
+				req.wantExposure = undefined;
+			}else{
+				req.wantExposure = data;
+			}
 			$scope.wantExposure = !$scope.wantExposure;
 		}
 		var spinner = dialog.showSpinner();

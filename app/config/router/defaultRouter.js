@@ -43,5 +43,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                     url: '/wechatlogin?userid',
                     templateUrl: 'app/modules/m_login/view/wechatlogin.html'
                 })
+                .state('layout.userinfo', {
+                    url: '/userinfo',
+                    templateUrl: 'app/modules/m_user/view/info.html'
+                })
 
     }]);

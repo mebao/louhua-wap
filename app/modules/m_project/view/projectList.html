@@ -25,11 +25,13 @@
 				</div>
 				<div class="select-mask" ng-show="haveUnitType">
 					<div class="select-list">
+						<div class="select-item" ng-click="havelistData('unitType', 'all')">All</div>
 						<div class="select-item" ng-repeat="(key, value) in optionsUnitType" ng-bind="key" ng-click="havelistData('unitType', key)"></div>
 					</div>
 				</div>
 				<div class="select-mask" ng-show="haveExposure">
 					<div class="select-list">
+						<div class="select-item" ng-click="havelistData('exposur', 'all')">All</div>
 						<div class="select-item" ng-repeat="(key, value) in optionsExposure" ng-bind="key" ng-click="havelistData('exposur', key)"></div>
 					</div>
 				</div>
@@ -82,11 +84,13 @@
 				</div>
 				<div class="select-mask" ng-show="wantUnitType">
 					<div class="select-list">
+						<div class="select-item" ng-click="wantlistData('unitType', 'all')">All</div>
 						<div class="select-item" ng-repeat="(key, value) in optionsUnitType" ng-bind="key" ng-click="wantlistData('unitType', key)"></div>
 					</div>
 				</div>
 				<div class="select-mask" ng-show="wantExposure">
 					<div class="select-list">
+						<div class="select-item" ng-click="wantlistData('exposur', 'all')">All</div>
 						<div class="select-item" ng-repeat="(key, value) in optionsExposure" ng-bind="key" ng-click="wantlistData('exposur', key)"></div>
 					</div>
 				</div>

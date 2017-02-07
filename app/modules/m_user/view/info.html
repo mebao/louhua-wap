@@ -1,0 +1,55 @@
+<div ng-controller="userinfoCtrl" class="userinfo-page">
+	<div class="content-page pad20">
+		<form name="userinfoName">
+			<div class="mt10 flex">
+				<div class="input-label">Email:</div>
+				<div class="flex-1 pt10" ng-bind="userinfo.username"></div>
+			</div>
+			<div class="mt10 flex">
+				<div class="input-label">WeChat ID:</div>
+				<div class="flex-1">
+					<input type="text" ng-model="userinfo.wechat_id" placeholder="WeChat ID">
+				</div>
+			</div>
+			<div class="mt10 flex">
+				<div class="input-label">Full Name:</div>
+				<div class="flex-1">
+					<input type="text" ng-model="userinfo.real_name" placeholder="Full Name">
+				</div>
+			</div>
+			<div class="mt10 flex">
+				<div class="input-label">Company:</div>
+				<div class="flex-1">
+					<input type="text" ng-model="userinfo.brokerage_name" placeholder="Company">
+				</div>
+			</div>
+			<div class="mt10 flex">
+				<div class="input-label">Cell Phone:</div>
+				<div class="flex-1">
+					<input type="text" ng-model="userinfo.cell" placeholder="Cell Phone">
+				</div>
+			</div>
+			<div class="mt10 flex">
+				<div class="input-label">Office Phone:</div>
+				<div class="flex-1">
+					<input type="text" ng-model="userinfo.office_telephone" placeholder="Office Phone">
+				</div>
+			</div>
+			<div class="mt10 flex">
+				<div class="input-label">Reco Number:</div>
+				<div class="flex-1">
+					<input type="text" ng-model="userinfo.reco_number" placeholder="Reco Number">
+				</div>
+			</div>
+			<div class="mt20 flex">
+				<div class="w110p">Subscribe:</div>
+				<div class="input-checkbox" ng-class="{'active': userinfo.subscribe == 'yes'}" ng-click="checkSubscribe()">
+					<div class="checkbox"></div>
+				</div>
+			</div>
+			<div class="mt20 text-center">
+				<button ng-click="updateUser()" class="btn btn-small btn-primary">update</button>
+			</div>
+		</form>
+	</div>
+</div>

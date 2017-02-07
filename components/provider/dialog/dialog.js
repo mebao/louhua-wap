@@ -2,7 +2,7 @@ app.factory('dialog', ['ngDialog', function (ngDialog) {
     return {
         alert: function (html, opts) {                 
             var buttonText = (opts) ? opts.okText || 'confirm' : 'confirm';
-            var titleText = (opts) ? opts.title || 'reminder' : 'reminder';
+            var titleText = (opts) ? opts.title || '' : '';
             var options = {
                 overlay: true,
                 contentHtml: '<div class="dialog-body">\
@@ -17,7 +17,7 @@ app.factory('dialog', ['ngDialog', function (ngDialog) {
         confirm: function (html, opts) {
             var okButtonText = (opts) ? opts.okText || 'confirm' : 'confirm';
             var cancelButtonText = (opts) ? opts.cancelText || 'cancel' : 'cancel';
-            var titleText = (opts) ? opts.title || 'reminder' : 'reminder';
+            var titleText = (opts) ? opts.title || '' : '';
             var options = {
                 overlay: true,
                 contentHtml: '<div class="dialog-body">\

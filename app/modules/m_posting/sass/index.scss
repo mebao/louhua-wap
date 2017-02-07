@@ -56,6 +56,12 @@
 			}
 			.tab-list{
 				font-size: px2rem(10px);
+				.delete-btn{
+					background-color: #78909C;
+					padding: px2rem(2px) px2rem(5px);
+					border-radius: px2rem(2px);
+					color: #fff;
+				}
 			}
 		}
 	}

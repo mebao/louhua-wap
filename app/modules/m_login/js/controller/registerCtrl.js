@@ -19,24 +19,24 @@ app.controller('registerCtrl',['$scope', '$state', 'CommonService', 'dialog', '$
             },2000);
             return false;
         }
-        if($scope.password_raw == undefined || $scope.password_raw.replace(/\s+/g, "") == ''){
-            $scope.errorTip = 'this Password must input';
-            $scope.errorMsg = true;
-            $timeout(function(){
-                $scope.errorMsg = false;
-            },2000);
-            return false;
-        }
+        // if($scope.password_raw == undefined || $scope.password_raw.replace(/\s+/g, "") == ''){
+        //     $scope.errorTip = 'this Password must input';
+        //     $scope.errorMsg = true;
+        //     $timeout(function(){
+        //         $scope.errorMsg = false;
+        //     },2000);
+        //     return false;
+        // }
         //验证密码格式
-        var passwordType = /^(\w){4,16}$/;
-        if(!$scope.password_raw.match(passwordType)){
-            $scope.errorTip = 'this Password must be a-zA-Z0-9_(4,16)';
-            $scope.errorMsg = true;
-            $timeout(function(){
-                $scope.errorMsg = false;
-            },2000);
-            return false;
-        }
+        // var passwordType = /^(\w){4,16}$/;
+        // if(!$scope.password_raw.match(passwordType)){
+        //     $scope.errorTip = 'this Password must be a-zA-Z0-9_(4,16)';
+        //     $scope.errorMsg = true;
+        //     $timeout(function(){
+        //         $scope.errorMsg = false;
+        //     },2000);
+        //     return false;
+        // }
         if($scope.wechat_id == undefined || $scope.wechat_id.replace(/\s+/g, "") == ''){
             $scope.errorTip = 'this Wechat ID must input';
             $scope.errorMsg = true;
@@ -69,14 +69,6 @@ app.controller('registerCtrl',['$scope', '$state', 'CommonService', 'dialog', '$
             },2000);
             return false;
         }
-        if($scope.office_telephone == undefined || $scope.office_telephone.replace(/\s+/g, "") == ''){
-            $scope.errorTip = 'this Office Phone must input';
-            $scope.errorMsg = true;
-            $timeout(function(){
-                $scope.errorMsg = false;
-            },2000);
-            return false;
-        }
         if($scope.reco_number == undefined || $scope.reco_number.replace(/\s+/g, "") == ''){
             $scope.errorTip = 'this Reco Number must input';
             $scope.errorMsg = true;
@@ -88,7 +80,7 @@ app.controller('registerCtrl',['$scope', '$state', 'CommonService', 'dialog', '$
         var spinner = dialog.showSpinner();
         var req = {
             username: $scope.username,
-            password_raw: $scope.password_raw,
+            password_raw: $scope.cell,
             wechat_id: $scope.wechat_id,
             real_name: $scope.real_name,
             brokerage_name: $scope.brokerage_name,

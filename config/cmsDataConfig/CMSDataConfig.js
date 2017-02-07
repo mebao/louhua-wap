@@ -49,23 +49,23 @@ app.factory('CMSDataConfig', ['StorageConfig', '$state', 'dialog', function (Sto
         {
             text: '',
             class: 'icon-user',
-            route: 'layout.login',
-            url: '/layout/login',
-            beforeCall: function(){
-                dialog.confirm('log out', {
-                    closeCallback: function(value){
-                        if(value == 0 ){
-                        }else{
-                            StorageConfig.TOKEN_STORAGE.removeItem('username');
-                            StorageConfig.TOKEN_STORAGE.removeItem('token');
-                            $state.go('layout.login', {
-                                from: 'layout.posting'
-                            });
-                        }
-                    }
-                });
-                return false;
-            }
+            route: 'layout.userinfo',
+            url: '/layout/userinfo',
+            // beforeCall: function(){
+            //     dialog.confirm('log out', {
+            //         closeCallback: function(value){
+            //             if(value == 0 ){
+            //             }else{
+            //                 StorageConfig.TOKEN_STORAGE.removeItem('username');
+            //                 StorageConfig.TOKEN_STORAGE.removeItem('token');
+            //                 $state.go('layout.login', {
+            //                     from: 'layout.posting'
+            //                 });
+            //             }
+            //         }
+            //     });
+            //     return false;
+            // }
         }
     ];
     return data;
