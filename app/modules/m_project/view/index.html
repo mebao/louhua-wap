@@ -10,6 +10,10 @@
 			<div class="total-tab flex">
 				<div class="left-tab">
 					<p>
+						<span class="p-label">project name:</span>
+						<span class="c-white" ng-bind="project.name"></span>
+					</p>
+					<p>
 						<span class="p-label">total posts:</span>
 						<span class="c-white" ng-bind="project.totalPosts"></span>
 					</p>
@@ -60,27 +64,33 @@
 						</div>
 						<div class="flex-1">
 							<div class="flex pt5">
-								<div class="w80p flex">
-									<img src="app/images/bed.png" class="icon-bed">
-									type:{{post.type}}
+								<div class="w100p flex">
+									<img src="app/images/home.png" class="icon-home">
+									Unit ID:{{post.id}}
 								</div>
 								<div class="flex-1 flex">
-									<img src="app/images/sun.png" class="icon-sun">
-									exposure:{{post.exposure}}
-								</div>
-								<div class="w70p flex">
-									<img src="app/images/balance.png" class="icon-balance">
-									coop:{{post.coop}}
+									<img src="app/images/bed.png" class="icon-bed">
+									Type:{{post.type}}
 								</div>
 							</div>
-							<div class="flex pt10">
-								<div class="w80p flex">
-									<img src="app/images/floor.png" class="icon-floor">
-									floor:{{post.floor}}
+							<div class="flex pt5">
+								<div class="w100p flex">
+									<img src="app/images/sun.png" class="icon-sun">
+									Exposure:{{post.exposure}}
 								</div>
-								<div class="flex">
+								<div class="flex-1 flex">
+									<img src="app/images/floor.png" class="icon-floor">
+									Floor:{{post.floor}}
+								</div>
+							</div>
+							<div class="flex pt5">
+								<div class="w100p flex">
+									<img src="app/images/balance.png" class="icon-balance">
+									Coop:{{post.coop}}
+								</div>
+								<div class="flex-1 flex">
 									<img src="app/images/dollar.png" class="icon-dollar">
-									price: {{post.price}}
+									Price: {{post.price}}
 								</div>
 							</div>
 						</div>
@@ -95,28 +105,28 @@
 						</div>
 						<div class="flex-1">
 							<div class="flex pt5">
-								<div class="w80p flex">
-									<img src="app/images/bed.png" class="icon-bed">
-									type:{{want.type}}
+								<div class="w100p flex">
+									<img src="app/images/home.png" class="icon-home">
+									Unit ID:{{want.id}}
 								</div>
 								<div class="flex-1 flex">
-									<img src="app/images/sun.png" class="icon-sun">
-									exposure:{{want.exposure}}
-								</div>
-								<div class="w70p flex">
-									<img src="app/images/balance.png" class="icon-balance">
-									coop:{{want.coop}}
+									<img src="app/images/bed.png" class="icon-bed">
+									Type:{{want.type}}
 								</div>
 							</div>
-							<div class="flex pt10">
-								<div class="w80p flex">
+							<div class="flex pt5">
+								<div class="w100p flex">
+									<img src="app/images/sun.png" class="icon-sun">
+									Exposure:{{want.exposure}}
+								</div>
+								<div class="flex-1 flex">
 									<img src="app/images/floor.png" class="icon-floor">
-									floor:{{want.floor}}
+									Floor:{{want.floor}}
 								</div>
-								<div class="flex">
-									<img src="app/images/dollar.png" class="icon-dollar">
-									price: {{want.price}}
-								</div>
+							</div>
+							<div class="flex pt5">
+								<img src="app/images/dollar.png" class="icon-dollar">
+								Price: {{want.price}}
 							</div>
 						</div>
 					</div>

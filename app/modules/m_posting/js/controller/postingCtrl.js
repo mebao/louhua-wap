@@ -60,7 +60,7 @@ app.controller('postingCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog
             },2000);
             return false;
         }
-        if($scope.selectedType == 'want' && ($scope.expect_floor_low >= $scope.expect_floor_high)){
+        if($scope.selectedType == 'want' && (parseInt($scope.expect_floor_low) >= parseInt($scope.expect_floor_high))){
             $scope.errorTip = 'this Floor high must greater than Floor low';
             $scope.errorMsg = true;
             $timeout(function(){
@@ -84,7 +84,7 @@ app.controller('postingCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog
             },2000);
             return false;
         }
-        if($scope.coop == undefined || $scope.coop.toString().replace(/\s+/g, "") == ''){
+        if($scope.selectedType == 'have' && ($scope.coop == undefined || $scope.coop.toString().replace(/\s+/g, "")) == ''){
             $scope.errorTip = 'this Prefer Coop must input';
             $scope.errorMsg = true;
             $timeout(function(){
@@ -92,7 +92,7 @@ app.controller('postingCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog
             },2000);
             return false;
         }
-        if($scope.coop > 100){
+        if($scope.selectedType == 'have' && ($scope.coop > 100)){
         	$scope.errorTip = 'this Prefer Coop not more than 4 length';
             $scope.errorMsg = true;
             $timeout(function(){
@@ -118,7 +118,7 @@ app.controller('postingCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog
 		postService.userpost(req).then(function(res){
 			getWant();
 			dialog.closeSpinner(spinner.id);
-			$scope.selectedTab = 1;
+			dialog.toast('success, Unit ID: ' + res.results.id);
 			//清空表单
 			$scope.project = undefined;
 			$scope.unit_type = undefined;

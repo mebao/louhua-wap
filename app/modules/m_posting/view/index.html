@@ -26,7 +26,7 @@
 							</div>
 						</div>
 						<div class="mt10 flex">
-							<div class="input-label">Project:</div>
+							<div class="input-label">Project Name:</div>
 							<div class="flex-1">
 								<select ng-model="project" ng-options="optionsProject as optionsProject.value for optionsProject in results.optionsProject">
 
@@ -56,13 +56,13 @@
 							</div>
 						</div>
 						<div class="mt10 flex" ng-show="selectedType=='want'">
-							<div class="input-label">Floor low:</div>
+							<div class="input-label">Expect Floor Low:</div>
 							<div class="flex-1">
 								<input type="tel" ng-model="expect_floor_low" maxlength="4" placeholder="Floor low">
 							</div>
 						</div>
 						<div class="mt10 flex" ng-show="selectedType=='want'">
-							<div class="input-label">Floor high:</div>
+							<div class="input-label">Floor Floor High:</div>
 							<div class="flex-1">
 								<input type="tel" ng-model="expect_floor_high" maxlength="4" placeholder="Floor high">
 							</div>
@@ -73,8 +73,8 @@
 								<input type="number" ng-model="price" placeholder="Price">
 							</div>
 						</div>
-						<div class="mt10 flex">
-							<div class="input-label">Prefer Coop:</div>
+						<div class="mt10 flex" ng-show="selectedType=='have'">
+							<div class="input-label">Coop Rate:</div>
 							<div class="flex-1">
 								<input type="number" ng-model="coop" placeholder="Prefer Coop">
 							</div>

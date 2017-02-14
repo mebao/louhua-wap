@@ -47,5 +47,9 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                     url: '/userinfo',
                     templateUrl: 'app/modules/m_user/view/info.html'
                 })
+                .state('layout.emailValidate', {
+                    url: '/emailValidate?status&error',
+                    templateUrl: 'app/modules/m_home/view/emailValidate.html'
+                })
 
     }]);

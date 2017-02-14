@@ -2,8 +2,14 @@
 }
 .register-page{
 	.input-label{
-		width: px2rem(110px);
+		width: px2rem(130px);
 		line-height: px2rem(40px);
+		padding-left: 22px;
+		&.must{
+			background: url('images/star.png') no-repeat;
+			background-size: 16px 16px;
+			background-position-y: 50%;
+		}
 	}
 	button{
 		width: px2rem(110px);

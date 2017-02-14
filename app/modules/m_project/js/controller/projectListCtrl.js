@@ -141,12 +141,15 @@ app.controller('projectListCtrl', ['$scope', 'projectService', 'StorageConfig', 
 		}
 		projectService.userwatch(params).then(function(res){
 			$scope.selectedHaveItem = 0;
+			$scope.selectedWantItem = 0;
 			dialog.closeSpinner(spinner.id);
 			$scope.matchOk = true;
 			$timeout(function(){
 				$scope.matchOk = false;
 			},2000);
 		},function(res){
+			$scope.selectedHaveItem = 0;
+			$scope.selectedWantItem = 0;
 			dialog.closeSpinner(spinner.id);
 			dialog.alert(res.errorMsg);
 		});

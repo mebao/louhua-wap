@@ -54,6 +54,10 @@
 		}
 	}
 }
+.icon-home{
+    width: 16px;
+    height: 16px;
+}
 .icon-bed{
 	margin-top: 4px;
     width: 16px;
@@ -109,6 +113,9 @@
 		.tab-item{
 			padding: .83333rem;
 	    	border-bottom: .08333rem solid #E6E6E6;
+	    	&.active{
+	    		background-color: #B3F7E1;
+	    	}
 		}
 		.top-section{
 			.tab-box .tab-header{

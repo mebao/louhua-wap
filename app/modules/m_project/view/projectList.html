@@ -17,11 +17,11 @@
 		<div class="content-section flex-1">
 			<div class="section flex" ng-show="selectedTab==0">
 				<div class="flex tab-type">
-					<div class="flex-1" ng-click="checkHaveUnitType()">Unit Type</div>
-					<div class="flex-1" ng-click="checkHaveExposure()">Exposure</div>
-					<div class="flex-1" ng-class="{'upDown': haveFloor==0, 'upArrow': haveFloor==1, 'downArrow': haveFloor==2}" ng-click="haveSort('floor', haveFloor)">Floor Lv</div>
-					<div class="flex-1" ng-class="{'upDown': havePrice==0, 'upArrow': havePrice==1, 'downArrow': havePrice==2}" ng-click="haveSort('price', havePrice)">Price</div>
-					<div class="flex-1" ng-class="{'upDown': haveCoop==0, 'upArrow': haveCoop==1, 'downArrow': haveCoop==2}" ng-click="haveSort('coop', haveCoop)">Coop</div>
+					<div class="w20" ng-click="checkHaveUnitType()">Unit Type</div>
+					<div class="w20" ng-click="checkHaveExposure()">Exposure</div>
+					<div class="w20" ng-class="{'upDown': haveFloor==0, 'upArrow': haveFloor==1, 'downArrow': haveFloor==2}" ng-click="haveSort('floor', haveFloor)">Floor Lv</div>
+					<div class="w20" ng-class="{'upDown': havePrice==0, 'upArrow': havePrice==1, 'downArrow': havePrice==2}" ng-click="haveSort('price', havePrice)">Price</div>
+					<div class="w20" ng-class="{'upDown': haveCoop==0, 'upArrow': haveCoop==1, 'downArrow': haveCoop==2}" ng-click="haveSort('coop', haveCoop)">Coop</div>
 				</div>
 				<div class="select-mask" ng-show="haveUnitType">
 					<div class="select-list">
@@ -37,33 +37,39 @@
 				</div>
 				<div class="tab-list flex-1">
 					<div ng-repeat="have in haveList">
-						<div class="tab-item flex" ng-click="checkHaveItem(have.id)">
+						<div class="tab-item flex" ng-class="{'active': have.id == selectedHaveItem}" ng-click="checkHaveItem(have.id)">
 							<div class="w55p">
 								<img src="app/images/user_small.jpeg" class="w100 pr5">
 							</div>
 							<div class="flex-1">
 								<div class="flex pt5">
-									<div class="w80p flex">
-										<img src="app/images/bed.png" class="icon-bed">
-										type:{{have.type}}
+									<div class="w100p flex">
+										<img src="app/images/home.png" class="icon-home">
+										Unit ID:{{have.id}}
 									</div>
 									<div class="flex-1 flex">
-										<img src="app/images/sun.png" class="icon-sun">
-										exposure:{{have.exposure}}
-									</div>
-									<div class="w70p flex">
-										<img src="app/images/balance.png" class="icon-balance">
-										coop:{{have.coop}}
+										<img src="app/images/bed.png" class="icon-bed">
+										Type:{{have.type}}
 									</div>
 								</div>
-								<div class="flex pt10">
-									<div class="w80p flex">
-										<img src="app/images/floor.png" class="icon-floor">
-										floor:{{have.floor}}
+								<div class="flex pt5">
+									<div class="w100p flex">
+										<img src="app/images/sun.png" class="icon-sun">
+										Exposure:{{have.exposure}}
 									</div>
-									<div class="flex">
+									<div class="flex-1 flex">
+										<img src="app/images/floor.png" class="icon-floor">
+										Floor:{{have.floor}}
+									</div>
+								</div>
+								<div class="flex pt5">
+									<div class="w100p flex">
+										<img src="app/images/balance.png" class="icon-balance">
+										Coop:{{have.coop}}
+									</div>
+									<div class="flex-1 flex">
 										<img src="app/images/dollar.png" class="icon-dollar">
-										price: {{have.price}}
+										Price: {{have.price}}
 									</div>
 								</div>
 							</div>
@@ -76,11 +82,10 @@
 			</div>
 			<div class="section flex" ng-show="selectedTab==1">
 				<div class="flex tab-type">
-					<div class="flex-1" ng-click="checkWantUnitType()">Unit Type</div>
-					<div class="flex-1" ng-click="checkWantExposure()">Exposure</div>
-					<div class="flex-1" ng-class="{'upDown': wantFloor==0, 'upArrow': wantFloor==1, 'downArrow': wantFloor==2}" ng-click="wantSort('floor', wantFloor)">Floor Lv</div>
-					<div class="flex-1" ng-class="{'upDown': wantPrice==0, 'upArrow': wantPrice==1, 'downArrow': wantPrice==2}" ng-click="wantSort('price', wantPrice)">Price</div>
-					<div class="flex-1" ng-class="{'upDown': wantCoop==0, 'upArrow': wantCoop==1, 'downArrow': wantCoop==2}" ng-click="wantSort('coop', wantCoop)">Coop</div>
+					<div class="w20" ng-click="checkWantUnitType()">Unit Type</div>
+					<div class="w20" ng-click="checkWantExposure()">Exposure</div>
+					<div class="w30" ng-class="{'upDown': wantFloor==0, 'upArrow': wantFloor==1, 'downArrow': wantFloor==2}" ng-click="wantSort('floor', wantFloor)">Floor Lv</div>
+					<div class="w30" ng-class="{'upDown': wantPrice==0, 'upArrow': wantPrice==1, 'downArrow': wantPrice==2}" ng-click="wantSort('price', wantPrice)">Price</div>
 				</div>
 				<div class="select-mask" ng-show="wantUnitType">
 					<div class="select-list">
@@ -96,34 +101,34 @@
 				</div>
 				<div class="tab-list flex-1">
 					<div ng-repeat="want in wantList">
-						<div class="tab-item flex" ng-click="checkWantItem(want.id)">
+						<div class="tab-item flex" ng-class="{'active': want.id == selectedWantItem}" ng-click="checkWantItem(want.id)">
 							<div class="w55p">
 								<img src="app/images/user_small.jpeg" class="w100 pr5">
 							</div>
 							<div class="flex-1">
 								<div class="flex pt5">
-									<div class="w80p flex">
-										<img src="app/images/bed.png" class="icon-bed">
-										type:{{want.type}}
+									<div class="w100p flex">
+										<img src="app/images/home.png" class="icon-home">
+										Unit ID:{{want.id}}
 									</div>
 									<div class="flex-1 flex">
-										<img src="app/images/sun.png" class="icon-sun">
-										exposure:{{want.exposure}}
-									</div>
-									<div class="w70p flex">
-										<img src="app/images/balance.png" class="icon-balance">
-										coop:{{want.coop}}
+										<img src="app/images/bed.png" class="icon-bed">
+										Type:{{want.type}}
 									</div>
 								</div>
-								<div class="flex pt10">
-									<div class="w80p flex">
+								<div class="flex pt5">
+									<div class="w100p flex">
+										<img src="app/images/sun.png" class="icon-sun">
+										Exposure:{{want.exposure}}
+									</div>
+									<div class="flex-1 flex">
 										<img src="app/images/floor.png" class="icon-floor">
-										floor:{{want.floor}}
+										Floor:{{want.floor}}
 									</div>
-									<div class="flex">
-										<img src="app/images/dollar.png" class="icon-dollar">
-										price: {{want.price}}
-									</div>
+								</div>
+								<div class="flex pt5">
+									<img src="app/images/dollar.png" class="icon-dollar">
+									Price: {{want.price}}
 								</div>
 							</div>
 						</div>
