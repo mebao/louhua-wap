@@ -17,6 +17,10 @@ app.service('postService', ['BaseHttpRequest', function(BaseHttpRequest){
 		return res;
 	}
 
+	function updatemypostDto(res){
+		return res;
+	}
+
 	var service = {
 		userpost: function(params){
 			var requestObj = {
@@ -27,7 +31,7 @@ app.service('postService', ['BaseHttpRequest', function(BaseHttpRequest){
 		},
 		postlist: function(urlOptions){
 			var requestObj = {
-				url: apiUrl + '/xlhapi/postlist?username=' + urlOptions.username + '&token=' + urlOptions.token
+				url: apiUrl + '/xlhapi/postlist?username=' + urlOptions.username + '&token=' + urlOptions.token + '&post_type=' + urlOptions.post_type + (urlOptions.postUnitType ? ('&unit_type=' + urlOptions.postUnitType) : '') + (urlOptions.postExposure ? ('&exposure=' + urlOptions.postExposure) : '')
 			}
 			return BaseHttpRequest.get(requestObj, postlistDto);
 		},
@@ -42,6 +46,13 @@ app.service('postService', ['BaseHttpRequest', function(BaseHttpRequest){
 				url: apiUrl + '/xlhapi/mypost/' + urlOptions.id + '?username=' + urlOptions.username + '&token=' + urlOptions.token + '&id=' + urlOptions.id + '&post_type=' + urlOptions.post_type
 			}
 			return BaseHttpRequest.delete(requestObj, deletemypostDto);
+		},
+		updatemypost: function(params){
+			var requestObj = {
+				url: apiUrl + '/xlhapi/updatemypost/' + params.id,
+				data: params
+			}
+			return BaseHttpRequest.post(requestObj, updatemypostDto);
 		}
 	}
 	return service;

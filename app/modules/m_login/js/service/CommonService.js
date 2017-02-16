@@ -25,6 +25,10 @@ app.service('CommonService',['BaseHttpRequest',function(BaseHttpRequest){
 		return res;
 	}
 
+	function sendemailDto(res){
+		return res;
+	}
+
 	var service={
 		userregist: function(params){
 			var requestObj = {
@@ -64,6 +68,12 @@ app.service('CommonService',['BaseHttpRequest',function(BaseHttpRequest){
 				url: apiUrl + '/xlhapi/loginwxuser?userid=' + urlOptions.userid
 			}
 			return BaseHttpRequest.get(requestObj, loginwxuserDto);
+		},
+		sendemail: function(urlOptions){
+			var requestObj = {
+				url: apiUrl + '/xlhapi/sendemail?email=' + urlOptions.email
+			}
+			return BaseHttpRequest.get(requestObj, sendemailDto);
 		}
 	}
     return service;

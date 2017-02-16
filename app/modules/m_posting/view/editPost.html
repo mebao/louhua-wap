@@ -1,0 +1,71 @@
+<div ng-controller="editPostCtrl" class="editPost-page">
+	<div class="popup-mask" ng-show="errorMsg">
+        <div class="popup-section text-center">
+            <div class="pad10 mt60" ng-bind="errorTip"></div>
+        </div>
+    </div>
+	<div class="content-page">
+		<div class="header-bar">
+			Edit My Post
+		</div>
+		<form class="pad20">
+			<div class="mt10 flex">
+				<div class="input-label">Project Name:</div>
+				<div class="flex-1">
+					<select ng-model="post.projectName" ng-options="optionsProject.value as optionsProject.value for optionsProject in results.optionsProject">
+
+					</select>
+				</div>
+			</div>
+			<div class="mt10 flex">
+				<div class="input-label">Unit Type:</div>
+				<div class="flex-1">
+					<select ng-model="post.type" ng-options="key as value for (key, value) in results.optionsUnitType">
+
+					</select>
+				</div>
+			</div>
+			<div class="mt10 flex">
+				<div class="input-label">Exposure:</div>
+				<div class="flex-1">
+					<select ng-model="post.exposure" ng-options="key as value for (key, value) in results.optionsExposure">
+
+					</select>
+				</div>
+			</div>
+			<div class="mt10 flex" ng-show="post.postType=='have'">
+				<div class="input-label">Floor Level:</div>
+				<div class="flex-1">
+					<input type="tel" ng-model="post.floor" maxlength="4" placeholder="Floor Level">
+				</div>
+			</div>
+			<div class="mt10 flex" ng-show="post.postType=='want'">
+				<div class="input-label">Expect Floor Low:</div>
+				<div class="flex-1">
+					<input type="tel" ng-model="post.floor_low" maxlength="4" placeholder="Floor low">
+				</div>
+			</div>
+			<div class="mt10 flex" ng-show="post.postType=='want'">
+				<div class="input-label">Floor Floor High:</div>
+				<div class="flex-1">
+					<input type="tel" ng-model="post.floor_high" maxlength="4" placeholder="Floor high">
+				</div>
+			</div>
+			<div class="mt10 flex">
+				<div class="input-label">Price:</div>
+				<div class="flex-1">
+					<input type="number" ng-model="post.price" placeholder="Price">
+				</div>
+			</div>
+			<div class="mt10 flex" ng-show="post.postType=='have'">
+				<div class="input-label">Coop Rate:</div>
+				<div class="flex-1">
+					<input type="number" ng-model="post.coop" placeholder="Prefer Coop">
+				</div>
+			</div>
+			<div class="btn-dock mt20">
+				<button ng-click="update()" class="btn btn-primary">Submit</button>
+			</div>
+		</form>
+	</div>
+</div>

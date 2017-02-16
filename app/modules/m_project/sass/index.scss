@@ -103,11 +103,14 @@
 		margin-left: px2rem(-120px);
 		color: #fff;
 		padding: px2rem(30px) 0;
+		&.projectList{
+			padding: px2rem(10px) 0;
+		}
 	}
 }
 .projectList-page{
 	.content-page{
-		overflow: hidden;
+		overflow: hidden!important;
 		flex-direction: column;
 		height: auto;
 		.tab-item{
@@ -133,11 +136,16 @@
 			}
 		}
 		.content-section{
+			height: 100%;
 	    	overflow: hidden;
 	    	font-size: px2rem(10px);
 	    	.section{
 	    		transition: all 2s ease;
-				height: 100%;
+	    		position: absolute;
+			    top: px2rem(50px);
+			    left: 0;
+			    right: 0;
+			    bottom: 0;
 				flex-direction: column;
 	    		.tab-type{
 					font-size: px2rem(10px);
@@ -170,7 +178,7 @@
 					background-color: rgba(0,0,0,0.3);
 					height: auto;
 					position: absolute;
-					top: px2rem(90px);
+					top: px2rem(34px);
 					left: 0;
 					right: 0;
 					bottom: 0;
@@ -181,6 +189,9 @@
 						.select-item{
 							padding: px2rem(10px);
 							border-bottom: 1px solid #E6E6E6;
+							&:first-child{
+								border-top: 1px solid #E6E6E6;
+							}
 						}
 					}
 				}

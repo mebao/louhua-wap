@@ -1,4 +1,18 @@
 .posting-page{
+	.select-mask{
+		position: absolute;
+		z-index: 99;
+		top: px2rem(48px);
+		color: #fff;
+		.right-content{
+			background-color: #384B54;
+			.item{
+				padding: px2rem(10px);
+				text-align: center;
+				border-top: 1px solid #fff;
+			}
+		}
+	}
 	.content-page{
 		overflow: hidden;
 		flex-direction: column;
@@ -24,7 +38,8 @@
 
 		}
 		.content-section{
-	    	overflow: auto;
+			height: 100%;
+	    	overflow: hidden;
 	    	.input-label{
 				width: px2rem(130px);
 				line-height: px2rem(40px);
@@ -54,15 +69,104 @@
 			    width: 9.16667rem;
 			    margin: 0 auto;
 			}
-			.tab-list{
-				font-size: px2rem(10px);
-				.delete-btn{
-					background-color: #78909C;
-					padding: px2rem(2px) px2rem(5px);
-					border-radius: px2rem(2px);
-					color: #fff;
+			.section{
+	    		transition: all 2s ease;
+	    		position: absolute;
+			    top: px2rem(50px);
+			    left: 0;
+			    right: 0;
+			    bottom: 0;
+				flex-direction: column;
+				&.form{
+					overflow: auto;
+				}
+				.tab-type{
+					font-size: px2rem(10px);
+					border-bottom: 1px solid #DEDEDE;
+					div{
+						padding: px2rem(10px) 0;
+						text-align: center;
+						border-right: 1px solid #DEDEDE;
+						&:last-child{
+							border-right: none;
+						}
+					}
+					.upDown{
+						background: url('images/up_down.png') no-repeat;
+						background-size: px2rem(10px);
+						background-position: 98% 50%;
+					}
+					.upArrow{
+						background: url('images/up_arrow.png') no-repeat;
+						background-size: px2rem(10px);
+						background-position: 98% 50%;
+					}
+					.downArrow{
+						background: url('images/down_arrow.png') no-repeat;
+						background-size: px2rem(10px);
+						background-position: 98% 50%;
+					}
+				}
+				.post-select{
+					background-color: rgba(0,0,0,0.3);
+					height: auto;
+					position: absolute;
+					top: px2rem(34px);
+					left: 0;
+					right: 0;
+					bottom: 0;
+					z-index: 9;
+					.select-list{
+						background-color: #fff;
+						font-size: px2rem(12px);
+						.select-item{
+							padding: px2rem(10px);
+							border-bottom: 1px solid #E6E6E6;
+							&:first-child{
+								border-top: 1px solid #E6E6E6;
+							}
+						}
+					}
+				}
+				.tab-list{
+					overflow: auto;
+					font-size: px2rem(10px);
+					.edit-btn{
+						background-color: #78909C;
+						margin-left: px2rem(10px);
+						padding: px2rem(2px) px2rem(5px);
+						border-radius: px2rem(2px);
+						color: #fff;
+					}
 				}
 			}
+		}
+	}
+}
+.editPost-page{
+	.content-page{
+		.header-bar{
+			height: px2rem(48px);
+			background-color: #78909C;
+			color: #fff;
+			padding: px2rem(10px);
+			text-align: center;
+			font-size: px2rem(16px);
+		}
+    	.input-label{
+			width: px2rem(130px);
+			line-height: px2rem(40px);
+		}
+		select{
+			height: px2rem(40px);
+			width: 100%;
+			border-radius: px2rem(6px);
+			background: #fff;
+			appearance:none;
+			-moz-appearance:none;
+			-webkit-appearance:none;
+			padding: px2rem(10px);
+			font-size: px2rem(map_get($map-font-size, m)) * 0.8;
 		}
 	}
 }

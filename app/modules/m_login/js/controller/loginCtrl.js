@@ -40,12 +40,18 @@ app.controller('loginCtrl',['$scope', 'CommonService', 'dialog', '$stateParams',
 		}
 		CommonService.userlogin(req).then(function(res){
 			dialog.closeSpinner(spinner.id);
-			StorageConfig.TOKEN_STORAGE.putItem('username', $scope.username);
-			StorageConfig.TOKEN_STORAGE.putItem('token', res.results.userinfo.token);
-			if($stateParams.from == undefined){
-				$state.go('layout.project');
+			if(res.results.userinfo.verify == 0){
+				$state.go('layout.email', {
+					email: $scope.username
+				});
 			}else{
-				$state.go($stateParams.from);
+				StorageConfig.TOKEN_STORAGE.putItem('username', $scope.username);
+				StorageConfig.TOKEN_STORAGE.putItem('token', res.results.userinfo.token);
+				if($stateParams.from == undefined){
+					$state.go('layout.project');
+				}else{
+					$state.go($stateParams.from);
+				}
 			}
 		},function(res){
 			dialog.closeSpinner(spinner.id);

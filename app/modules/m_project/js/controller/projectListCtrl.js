@@ -143,6 +143,11 @@ app.controller('projectListCtrl', ['$scope', 'projectService', 'StorageConfig', 
 			$scope.selectedHaveItem = 0;
 			$scope.selectedWantItem = 0;
 			dialog.closeSpinner(spinner.id);
+			if(res.results.msg == 'ok'){
+				$scope.matchTip = 'Your match request has been submitted successful. Our agent will contact with you shortly.';
+			}else{
+				$scope.matchTip = 'Your match request has been submitted successful. You are on the waiting list. Our agent will contact with you shortly.';
+			}
 			$scope.matchOk = true;
 			$timeout(function(){
 				$scope.matchOk = false;

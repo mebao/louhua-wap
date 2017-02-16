@@ -1,8 +1,8 @@
 <div ng-controller="projectListCtrl" class="projectList-page">
     <div class="popup-mask" ng-show="matchOk">
-        <div class="popup-section text-center">
+        <div class="popup-section text-center projectList">
         	<img src="app/images/right.png" class="w100p">
-            <div class="pad10">match successful, our agent will contact with you shortly</div>
+            <div class="pl10 pr10" ng-bind="matchTip"></div>
         </div>
     </div>
 	<div class="content-page flex">

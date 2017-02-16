@@ -123,3 +123,41 @@
 		font-size: px2rem(map_get($map-font-size, m)) * 2;
 	}
 }
+.email-page{
+	.email-tab{
+		margin-top: px2rem(20px);
+		border: 1px solid #BBBBBB;
+		border-radius: px2rem(5px);
+		.left-input{
+			padding: px2rem(10px);
+		}
+		.right-btn{
+			margin: px2rem(5px);
+			background-color: #78909C;
+			color: #fff;
+			padding: px2rem(5px);
+			border: none;
+			border-radius: px2rem(5px);
+			&:disabled{
+				background: #d6d6d6;
+    			color: rgba(0,0,0,0.4);
+			}
+		}
+	}
+	.tip{
+		margin-top: px2rem(10px);
+		background-color: #78909C;
+		color: #fff;
+		padding: px2rem(10px);
+		text-align: center;
+		border-radius: px2rem(5px);
+		button{
+			padding: px2rem(5px) px2rem(20px);
+			margin-top: px2rem(10px);
+			border: none;
+			background-color: #fff;
+			border-radius: px2rem(5px);
+			font-size: px2rem(14px);
+		}
+	}
+}

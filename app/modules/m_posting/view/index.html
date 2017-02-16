@@ -4,6 +4,15 @@
             <div class="pad10 mt60" ng-bind="errorTip"></div>
         </div>
     </div>
+    <div class="select-mask w100" ng-show="showPostType">
+		<div class="flex">
+			<div class="flex-1"></div>
+			<div class="flex-1 right-content">
+				<div class="item" ng-click="postType('have')">I have</div>
+				<div class="item" ng-click="postType('want')">I want</div>
+			</div>
+		</div>
+    </div>
 	<div class="content-page flex">
 		<div class="top-section">
 			<div class="tab-box">
@@ -14,7 +23,7 @@
 			</div>
 		</div>
 		<div class="content-section flex-1">
-			<div class="" ng-show="selectedTab==0">
+			<div class="section form" ng-show="selectedTab==0">
 				<div class="pad20">
 					<form name="postForm">
 						<div class="mt10 flex">
@@ -85,8 +94,27 @@
 					</form>
 				</div>
 			</div>
-			<div class="" ng-show="selectedTab==1">
-				<div class="tab-list">
+			<div class="section flex" ng-show="selectedTab==1">
+				<div class="flex tab-type">
+					<div class="w20" ng-click="checkPostUnitType()">Unit Type</div>
+					<div class="w20" ng-click="checkPostExposure()">Exposure</div>
+					<div class="w20" ng-class="{'upDown': postFloor==0, 'upArrow': postFloor==1, 'downArrow': postFloor==2}" ng-click="postSort('floor', postFloor)">Floor Lv</div>
+					<div class="w20" ng-class="{'upDown': postPrice==0, 'upArrow': postPrice==1, 'downArrow': postPrice==2}" ng-click="postSort('price', postPrice)">Price</div>
+					<div class="w20" ng-class="{'upDown': postCoop==0, 'upArrow': postCoop==1, 'downArrow': postCoop==2}" ng-click="postSort('coop', postCoop)">Coop</div>
+				</div>
+				<div class="post-select" ng-show="postUnitType">
+					<div class="select-list">
+						<div class="select-item" ng-click="postlistData('unitType', 'all')">All</div>
+						<div class="select-item" ng-repeat="(key, value) in optionsUnitType" ng-bind="key" ng-click="postlistData('unitType', key)"></div>
+					</div>
+				</div>
+				<div class="post-select" ng-show="postExposure">
+					<div class="select-list">
+						<div class="select-item" ng-click="postlistData('exposur', 'all')">All</div>
+						<div class="select-item" ng-repeat="(key, value) in optionsExposure" ng-bind="key" ng-click="postlistData('exposur', key)"></div>
+					</div>
+				</div>
+				<div class="flex-1 tab-list">
 					<div class="tab-item" ng-repeat="post in postList">
 						<div class="flex">
 							<div class="w55p">
@@ -123,7 +151,8 @@
 							<div class="flex-1 pt2">
 								post time: {{post.time}}
 							</div>
-							<div class="delete-btn" ng-click="delete(post)">delete</div>
+							<div class="edit-btn" ng-click="edit(post)">edit</div>
+							<div class="edit-btn" ng-click="delete(post)">delete</div>
 						</div>
 					</div>
 				</div>

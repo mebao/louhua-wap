@@ -7,7 +7,9 @@ app.run(['$rootScope','StorageConfig','$state',function($rootScope,StorageConfig
 		//need intercept
 		var urlList = [
 			'projectList',
-			'posting'
+			'posting',
+			'userinfo',
+			'editPost',
 		];
 
 		var intercept = false;

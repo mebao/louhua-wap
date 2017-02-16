@@ -1,0 +1,26 @@
+<div ng-controller="emailCtrl" class="email-page">
+	<div class="content-page pad20">
+		<div class="text-center">
+			<img src="app/images/user.png" class="w110p">
+		</div>
+		<div class="email-tab flex">
+			<div class="left-input flex-1" ng-bind="email">
+			</div>
+			<button class="right-btn" ng-disabled="lockEnabled" ng-click="sendEmail()" ng-bind="sendText">
+			</button>
+		</div>
+		<div class="tip" ng-show="showTip">
+			<div ng-show="send">
+				<div>Your email hasn't been verified, Please send an email to complete the registration</div>
+				<button ng-click="hiddenTip()">ok</button>
+			</div>
+			<div ng-show="!send">
+				<p>Send successfully!</p>
+				<div>
+					Please click on the confirm link in your sign-up email to complete the registration and log in again.
+				</div>
+				<button ng-click="login()">ok</button>
+			</div>
+		</div>
+	</div>
+</div>

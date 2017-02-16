@@ -39,6 +39,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                     url: '/posting',
                     templateUrl: 'app/modules/m_posting/view/index.html'
                 })
+                .state('layout.editPost', {
+                    url: '/editPost',
+                    templateUrl: 'app/modules/m_posting/view/editPost.html'
+                })
                 .state('layout.wechatlogin', {
                     url: '/wechatlogin?userid',
                     templateUrl: 'app/modules/m_login/view/wechatlogin.html'
@@ -46,6 +50,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                 .state('layout.userinfo', {
                     url: '/userinfo',
                     templateUrl: 'app/modules/m_user/view/info.html'
+                })
+                .state('layout.email', {
+                    url: '/email?email',
+                    templateUrl: 'app/modules/m_login/view/email.html'
                 })
                 .state('layout.emailValidate', {
                     url: '/emailValidate?status&error',

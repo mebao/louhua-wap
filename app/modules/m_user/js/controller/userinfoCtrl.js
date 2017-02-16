@@ -1,4 +1,4 @@
-app.controller('userinfoCtrl', ['$scope', 'userService', 'dialog', 'StorageConfig', 'CommonService', '$state', function($scope, userService, dialog, StorageConfig, CommonService, $state){
+app.controller('userinfoCtrl', ['$scope', 'userService', 'dialog', 'StorageConfig', 'CommonService', '$state', '$rootScope', function($scope, userService, dialog, StorageConfig, CommonService, $state, $rootScope){
 	var spinner = dialog.showSpinner();
 	var req = {
 		username: StorageConfig.TOKEN_STORAGE.getItem('username'),
@@ -42,7 +42,13 @@ app.controller('userinfoCtrl', ['$scope', 'userService', 'dialog', 'StorageConfi
 	}
 
 	$scope.logout = function(){
-		StorageConfig.TOKEN_STORAGE.remove();
+		StorageConfig.TOKEN_STORAGE.removeItem('username');
+		StorageConfig.TOKEN_STORAGE.removeItem('token');
+		// window.footerConfig = {
+		// 	enableCheckType: 0
+		// }
+
+		// $rootScope.$broadcast('setFooterConfig', window.footerConfig);
 		$state.go('layout.login');
 	}
 }]);

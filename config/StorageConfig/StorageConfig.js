@@ -9,11 +9,14 @@ app.factory('StorageConfig', ['ngStorage', function (ngStorage) {
     var footer_storage = ngStorage.sessionStorage('footer');
     //用于存储首页默认I have或I want
     var project_storage = ngStorage.sessionStorage('project');
+    //用于存储需要编辑的post
+    var post_storage = ngStorage.sessionStorage('post');
     return {
         COMMON_STORAGE: common_storage,
         TOKEN_STORAGE: session_token,
         INTERCEPT_STORAGE: intercept_storage,
         FOOTER_STORAGE: footer_storage,
         PROJECT_STORAGE: project_storage,
+        POST_STORAGE: post_storage,
     };
 }]);
