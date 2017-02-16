@@ -90,7 +90,16 @@ app.controller('registerCtrl',['$scope', '$state', 'CommonService', 'dialog', '$
         }
         CommonService.userregist(req).then(function(res){
             dialog.closeSpinner(spinner.id);
-            $state.go('layout.login');
+            dialog.alert('Please log in to verify the mailbox.', {
+                closeCallback: function(value){
+                        if(value == 0 ){
+                        }else{
+                            $state.go('layout.login');
+                        }
+                    }
+                }
+            );
+            
         }, function(res){
             dialog.closeSpinner(spinner.id);
             dialog.alert(res.errorMsg);

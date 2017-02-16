@@ -102,7 +102,7 @@ app.controller('editPostCtrl', ['$scope', 'StorageConfig', 'postService', 'dialo
 		}
 		postService.updatemypost(req).then(function(res){
 			dialog.closeSpinner(spinner.id);
-			dialog.toast('success, Unit ID: ' + $scope.post.id);
+			dialog.toast('update success');
 			if($scope.post.postType == 'want'){
 				$scope.post.floor = $scope.post.floor_low + '-' + $scope.post.floor_high;
 			}

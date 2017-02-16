@@ -17,6 +17,10 @@ app.controller('userinfoCtrl', ['$scope', 'userService', 'dialog', 'StorageConfi
 		});
 	}
 
+	$scope.unchangeable = function(){
+		dialog.toast('Please contact us to modify it.');
+	}
+
 	$scope.checkSubscribe = function(){
 		$scope.userinfo.subscribe = ($scope.userinfo.subscribe == 'no' ? 'yes' : 'no');
 	}
@@ -35,6 +39,7 @@ app.controller('userinfoCtrl', ['$scope', 'userService', 'dialog', 'StorageConfi
         }
         CommonService.useraccount(updateReq).then(function(res){
         	getData(spinner2);
+        	dialog.toast('update success');
         },function(res){
             dialog.closeSpinner(spinner2.id);
             dialog.alert(res.errorMsg);

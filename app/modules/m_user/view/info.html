@@ -1,7 +1,14 @@
 <div ng-controller="userinfoCtrl" class="userinfo-page">
 	<div class="content-page pad20">
 		<form name="userinfoName">
-			<div class="mt10 flex">
+			<div class="text-center">
+				<img src="app/images/user.png" class="w110p">
+			</div>
+			<div class="flex">
+				<div class="input-label">Account ID:</div>
+				<div class="flex-1 pt10" ng-bind="userinfo.user_id"></div>
+			</div>
+			<div class="flex">
 				<div class="input-label">Email:</div>
 				<div class="flex-1 pt10" ng-bind="userinfo.username"></div>
 			</div>
@@ -37,9 +44,7 @@
 			</div>
 			<div class="mt10 flex">
 				<div class="input-label">Reco Number:</div>
-				<div class="flex-1">
-					<input type="text" ng-model="userinfo.reco_number" placeholder="Reco Number">
-				</div>
+				<div class="flex-1 pt10" ng-bind="userinfo.reco_number" ng-click="unchangeable()"></div>
 			</div>
 			<div class="mt20 flex">
 				<div class="w110p">Subscribe:</div>

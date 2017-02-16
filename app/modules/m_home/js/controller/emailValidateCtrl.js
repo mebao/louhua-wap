@@ -7,14 +7,14 @@ app.controller('emailValidateCtrl', ['$scope', '$rootScope', '$stateParams', fun
 
 	$scope.showTip = '';
 	if($stateParams.status == 'ok'){
-		$scope.showTip = '验证成功';
+		$scope.showTip = 'verify success';
 	}else{
 		if($stateParams.error == 'null'){
-			$scope.showTip = '验证链接错误';
+			$scope.showTip = 'verify link error';
 		}else if($stateParams.error == 'expired'){
-			$scope.showTip = '验证链接过期';
+			$scope.showTip = 'verify link expired';
 		}else if($stateParams.error == 'used'){
-			$scope.showTip = '验证链接已被使用';
+			$scope.showTip = 'verify link has been used';
 		}
 	}
 }]);
