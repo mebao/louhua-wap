@@ -20,6 +20,11 @@
 		.tab-item{
 			padding: .83333rem;
 	    	border-bottom: .08333rem solid #E6E6E6;
+	    	&.drop_down{
+	    		background: url('images/drop_down.png') no-repeat;
+	    		background-size: px2rem(14px) px2rem(14px);
+	    		background-position: 85% 50%;
+	    	}
 		}
 		.top-section{
 			.tab-box .tab-header{
@@ -30,7 +35,7 @@
 					line-height: inherit;
 					color: #fff;
 					&.active{
-						background: #384B54;
+						background-color: #384B54;
 						border-bottom: inherit;
 					}
 				}
@@ -58,12 +63,15 @@
 				height: px2rem(40px);
 				width: 100%;
 				border-radius: px2rem(6px);
-				background: #fff;
+				background-color: #fff;
 				appearance:none;
 				-moz-appearance:none;
 				-webkit-appearance:none;
 				padding: px2rem(10px);
 				font-size: px2rem(map_get($map-font-size, m)) * 0.8;
+				background: url('images/drop_down_black.png') no-repeat;
+				background-size: px2rem(12px) px2rem(12px);
+				background-position: 95% 50%;
 			}
 			button{
 			    width: 9.16667rem;

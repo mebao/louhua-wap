@@ -20,7 +20,9 @@ app.controller('postingCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog
 
 	}
 
+	$scope.myPostType = 'have';
 	$scope.postType = function(_type){
+		$scope.myPostType = _type;
 		var spinner = dialog.showSpinner();
 		$scope.showPostType = false;
 		postListReq.post_type = _type;

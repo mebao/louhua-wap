@@ -28,6 +28,8 @@ app.controller('projectCtrl', ['$scope', 'projectService', 'dialog', 'StorageCon
 			dialog.closeSpinner(spinner.id);
 			$scope.project = res.results.project;
 			$scope.postList = res.results.postList;
+			StorageConfig.TOKEN_STORAGE.putItem('projectName', res.results.project.name);
+			document.title = res.results.project.name;
 		},function(res){
 			dialog.closeSpinner(spinner.id);
 			dialog.alert(res.errorMsg);

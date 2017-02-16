@@ -1,5 +1,5 @@
 app.directive('headerWidget', [function () {
-    var ctrl = ['$scope', '$rootScope', 'helper', '$state', function ($scope, $rootScope, helper, $state) {
+    var ctrl = ['$scope', '$rootScope', 'helper', '$state', 'StorageConfig', function ($scope, $rootScope, helper, $state, StorageConfig) {
         var defaults = {
             enableHeader: false,
             enableBack: true,
@@ -37,7 +37,7 @@ app.directive('headerWidget', [function () {
                 ],
                 trackKey: 'name'
             },
-            title: 'app'
+            title: StorageConfig.TOKEN_STORAGE.getItem('projectName') ? StorageConfig.TOKEN_STORAGE.getItem('projectName') : 'app'
         };
         $scope.defaults = angular.extend(angular.copy(defaults), window.headerConfig);
         document.title = $scope.defaults.title;

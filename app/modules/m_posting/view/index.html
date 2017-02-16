@@ -18,7 +18,7 @@
 			<div class="tab-box">
 				<div class="tab-header">
 					<div class="tab-item" ng-class="{'active': selectedTab==0}" ng-click="checkTab(0)">New Post</div>
-					<div class="tab-item" ng-class="{'active': selectedTab==1}" ng-click="checkTab(1)">My Post</div>
+					<div class="tab-item drop_down" ng-class="{'active': selectedTab==1}" ng-click="checkTab(1)">My Post</div>
 				</div>
 			</div>
 		</div>
@@ -83,7 +83,7 @@
 							</div>
 						</div>
 						<div class="mt10 flex" ng-show="selectedType=='have'">
-							<div class="input-label">Coop Rate:</div>
+							<div class="input-label">Coop Rate(%):</div>
 							<div class="flex-1">
 								<input type="number" ng-model="coop" placeholder="Prefer Coop">
 							</div>
@@ -122,27 +122,33 @@
 							</div>
 							<div class="flex-1">
 								<div class="flex pt5">
-									<div class="w80p flex">
-										<img src="app/images/bed.png" class="icon-bed">
-										type:{{post.type}}
+									<div class="w120p flex">
+										<img src="app/images/home.png" class="icon-home">
+										Unit ID:{{post.id}}
 									</div>
 									<div class="flex-1 flex">
-										<img src="app/images/sun.png" class="icon-sun">
-										exposure:{{post.exposure}}
-									</div>
-									<div class="w70p flex">
-										<img src="app/images/balance.png" class="icon-balance">
-										coop:{{post.coop}}
+										<img src="app/images/bed.png" class="icon-bed">
+										Type:{{post.type}}
 									</div>
 								</div>
 								<div class="flex pt10">
-									<div class="w80p flex">
-										<img src="app/images/floor.png" class="icon-floor">
-										floor:{{post.floor}}
+									<div class="w120p flex">
+										<img src="app/images/sun.png" class="icon-sun">
+										Exposure:{{post.exposure}}
 									</div>
-									<div class="flex">
+									<div class="flex-1 flex">
+										<img src="app/images/floor.png" class="icon-floor">
+										Floor:{{post.floor}}
+									</div>
+								</div>
+								<div class="flex pt10">
+									<div class="w120p flex" ng-show="myPostType == 'have'">
+										<img src="app/images/balance.png" class="icon-balance">
+										Coop:{{post.coop}}%
+									</div>
+									<div class="flex-1 flex">
 										<img src="app/images/dollar.png" class="icon-dollar">
-										price: {{post.price}}
+										Price: {{post.price}}
 									</div>
 								</div>
 							</div>
