@@ -74,8 +74,13 @@
 								</div>
 							</div>
 						</div>
-						<div class="match" ng-show="have.id == selectedHaveItem" ng-click="match(have.id, 'have')">
-							Match
+						<div class="flex" ng-show="have.id == selectedHaveItem">
+							<div class="flex-1 match mr5" ng-click="match(have.id, 'have')">
+								Match
+							</div>
+							<div class="flex-1 match ml5" ng-click="detail(have)">
+								Detail
+							</div>
 						</div>
 					</div>
 				</div>
@@ -132,8 +137,13 @@
 								</div>
 							</div>
 						</div>
-						<div class="match" ng-show="want.id == selectedWantItem" ng-click="match(want.id, 'want')">
-							Match
+						<div class="flex" ng-show="want.id == selectedWantItem">
+							<div class="flex-1 match mr5" ng-click="match(want.id, 'want')">
+								Match
+							</div>
+							<div class="flex-1 match ml5" ng-click="detail(want)">
+								Detail
+							</div>
 						</div>
 					</div>
 				</div>

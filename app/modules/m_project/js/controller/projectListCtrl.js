@@ -1,4 +1,4 @@
-app.controller('projectListCtrl', ['$scope', 'projectService', 'StorageConfig', 'dialog', '$timeout', 'postService', function($scope, projectService, StorageConfig, dialog, $timeout, postService){
+app.controller('projectListCtrl', ['$scope', 'projectService', 'StorageConfig', 'dialog', '$timeout', 'postService', '$state', function($scope, projectService, StorageConfig, dialog, $timeout, postService, $state){
 	$scope.matchOk = false;
 	if(StorageConfig.PROJECT_STORAGE.getItem('listTab')){
 		$scope.selectedTab = StorageConfig.PROJECT_STORAGE.getItem('listTab');
@@ -130,6 +130,11 @@ app.controller('projectListCtrl', ['$scope', 'projectService', 'StorageConfig', 
 		}
 		var spinner = dialog.showSpinner();
 		getWantlistData(spinner);
+	}
+
+	$scope.detail = function(_detail){
+		StorageConfig.PROJECT_STORAGE.putItem('detail', _detail);
+		$state.go('layout.projectDetail');
 	}
 
 	$scope.match = function(_id, _type){

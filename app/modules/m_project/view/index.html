@@ -58,76 +58,86 @@
 		<div class="content-section flex-1">
 			<div class="section" ng-show="selectedTab==0">
 				<div class="tab-list">
-					<div class="tab-item flex" ng-repeat="post in postList">
-						<div class="w55p">
-							<img src="app/images/user_small.jpeg" class="w100 pr5">
+					<div ng-repeat="post in postList">
+						<div class="tab-item flex" ng-class="{'active': post.id == selectedPostItem}" ng-click="checkPostItem(post.id)">
+							<div class="w55p">
+								<img src="app/images/user_small.jpeg" class="w100 pr5">
+							</div>
+							<div class="flex-1">
+								<div class="flex pt5">
+									<div class="w120p flex">
+										<img src="app/images/home.png" class="icon-home">
+										Unit ID:{{post.id}}
+									</div>
+									<div class="flex-1 flex">
+										<img src="app/images/bed.png" class="icon-bed">
+										Type:{{post.type}}
+									</div>
+								</div>
+								<div class="flex pt5">
+									<div class="w120p flex">
+										<img src="app/images/sun.png" class="icon-sun">
+										Exposure:{{post.exposure}}
+									</div>
+									<div class="flex-1 flex">
+										<img src="app/images/floor.png" class="icon-floor">
+										Floor:{{post.floor}}
+									</div>
+								</div>
+								<div class="flex pt5">
+									<div class="w120p flex">
+										<img src="app/images/balance.png" class="icon-balance">
+										Coop:{{post.coop}}%
+									</div>
+									<div class="flex-1 flex">
+										<img src="app/images/dollar.png" class="icon-dollar">
+										Price: {{post.price}}
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="flex-1">
-							<div class="flex pt5">
-								<div class="w120p flex">
-									<img src="app/images/home.png" class="icon-home">
-									Unit ID:{{post.id}}
-								</div>
-								<div class="flex-1 flex">
-									<img src="app/images/bed.png" class="icon-bed">
-									Type:{{post.type}}
-								</div>
-							</div>
-							<div class="flex pt5">
-								<div class="w120p flex">
-									<img src="app/images/sun.png" class="icon-sun">
-									Exposure:{{post.exposure}}
-								</div>
-								<div class="flex-1 flex">
-									<img src="app/images/floor.png" class="icon-floor">
-									Floor:{{post.floor}}
-								</div>
-							</div>
-							<div class="flex pt5">
-								<div class="w120p flex">
-									<img src="app/images/balance.png" class="icon-balance">
-									Coop:{{post.coop}}%
-								</div>
-								<div class="flex-1 flex">
-									<img src="app/images/dollar.png" class="icon-dollar">
-									Price: {{post.price}}
-								</div>
-							</div>
+						<div class="detail" ng-show="post.id == selectedPostItem" ng-click="detail(post)">
+							Detail
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="section" ng-show="selectedTab==1">
 				<div class="tab-list">
-					<div class="tab-item flex" ng-repeat="want in wantList">
-						<div class="w55p">
-							<img src="app/images/user_small.jpeg" class="w100 pr5">
+					<div ng-repeat="want in wantList">
+						<div class="tab-item flex" ng-class="{'active': want.id == selectedWantItem}" ng-click="checkWantItem(want.id)">
+							<div class="w55p">
+								<img src="app/images/user_small.jpeg" class="w100 pr5">
+							</div>
+							<div class="flex-1">
+								<div class="flex pt5">
+									<div class="w120p flex">
+										<img src="app/images/home.png" class="icon-home">
+										Unit ID:{{want.id}}
+									</div>
+									<div class="flex-1 flex">
+										<img src="app/images/bed.png" class="icon-bed">
+										Type:{{want.type}}
+									</div>
+								</div>
+								<div class="flex pt5">
+									<div class="w120p flex">
+										<img src="app/images/sun.png" class="icon-sun">
+										Exposure:{{want.exposure}}
+									</div>
+									<div class="flex-1 flex">
+										<img src="app/images/floor.png" class="icon-floor">
+										Floor:{{want.floor}}
+									</div>
+								</div>
+								<div class="flex pt5">
+									<img src="app/images/dollar.png" class="icon-dollar">
+									Price: {{want.price}}
+								</div>
+							</div>
 						</div>
-						<div class="flex-1">
-							<div class="flex pt5">
-								<div class="w120p flex">
-									<img src="app/images/home.png" class="icon-home">
-									Unit ID:{{want.id}}
-								</div>
-								<div class="flex-1 flex">
-									<img src="app/images/bed.png" class="icon-bed">
-									Type:{{want.type}}
-								</div>
-							</div>
-							<div class="flex pt5">
-								<div class="w120p flex">
-									<img src="app/images/sun.png" class="icon-sun">
-									Exposure:{{want.exposure}}
-								</div>
-								<div class="flex-1 flex">
-									<img src="app/images/floor.png" class="icon-floor">
-									Floor:{{want.floor}}
-								</div>
-							</div>
-							<div class="flex pt5">
-								<img src="app/images/dollar.png" class="icon-dollar">
-								Price: {{want.price}}
-							</div>
+						<div class="detail" ng-show="want.id == selectedWantItem" ng-click="detail(want)">
+							Detail
 						</div>
 					</div>
 				</div>

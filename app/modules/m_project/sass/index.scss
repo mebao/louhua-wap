@@ -17,6 +17,9 @@
 		.tab-item{
 			padding: 0.83333rem;
 	    	border-bottom: .08333rem solid #E6E6E6;
+	    	&.active{
+	    		background-color: #B3F7E1;
+	    	}
 		}
 		.top-section{
 			.total-tab{
@@ -51,6 +54,12 @@
 	    	.section{
 	    		transition: all 2s ease;
 	    	}
+			.detail{
+				padding: px2rem(10px);
+				background: #78909C;
+				color: #fff;
+				text-align: center;
+			}
 		}
 	}
 }
@@ -205,6 +214,34 @@
 				color: #fff;
 				text-align: center;
 			}
+		}
+	}
+}
+.projectDetail-page{
+	.content-page{
+		.header-bar{
+			height: px2rem(48px);
+			background-color: #78909C;
+			color: #fff;
+			padding: px2rem(10px);
+			text-align: center;
+			font-size: px2rem(16px);
+		}
+    	.left-label{
+			width: px2rem(130px);
+			line-height: px2rem(40px);
+		}
+		.right-label{
+			line-height: px2rem(40px);
+			background-color: #384B54;
+			color: #fff;
+			text-align: center;
+		}
+		.postType{
+			padding: px2rem(2px) px2rem(5px);
+			background-color: #384B54;
+			border-radius: px2rem(5px);
+			color: #fff;
 		}
 	}
 }

@@ -35,6 +35,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                     url: '/projectList',
                     templateUrl: 'app/modules/m_project/view/projectList.html'
                 })
+                .state('layout.projectDetail', {
+                    url: '/projectDetail',
+                    templateUrl: 'app/modules/m_project/view/projectDetail.html'
+                })
                 .state('layout.posting', {
                     url: '/posting?tab&type',
                     templateUrl: 'app/modules/m_posting/view/index.html'

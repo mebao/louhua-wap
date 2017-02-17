@@ -61,4 +61,17 @@ app.controller('projectCtrl', ['$scope', 'projectService', 'dialog', 'StorageCon
 			});
 		}
 	}
+
+	$scope.checkPostItem = function(_id){
+		$scope.selectedPostItem = _id;
+	}
+
+	$scope.checkWantItem = function(_id){
+		$scope.selectedWantItem = _id;
+	}
+
+	$scope.detail = function(_detail){
+		StorageConfig.PROJECT_STORAGE.putItem('detail', _detail);
+		$state.go('layout.projectDetail');
+	}
 }]);

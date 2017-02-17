@@ -1,0 +1,50 @@
+<div ng-controller="projectDetailCtrl" class="projectDetail-page">
+	<div class="content-page">
+		<div class="header-bar">
+			Unit Detail
+		</div>
+		<form class="pad20">
+			<div class="flex">
+				<div class="left-label">Post Type:</div>
+				<div class="flex-1 pt10">
+					<span class="postType">
+						<span>I </span>
+						<span ng-bind="detail.postType"></span>
+					</span>
+				</div>
+			</div>
+			<div class="mt10 flex">
+				<div class="left-label">Project Name:</div>
+				<div class="flex-1 right-label" ng-bind="detail.projectName"></div>
+			</div>
+			<div class="mt10 flex">
+				<div class="left-label">Unit Type:</div>
+				<div class="flex-1 right-label" ng-bind="detail.type"></div>
+			</div>
+			<div class="mt10 flex">
+				<div class="left-label">Exposure:</div>
+				<div class="flex-1 right-label" ng-bind="detail.exposure"></div>
+			</div>
+			<div class="mt10 flex" ng-show="detail.postType=='have'">
+				<div class="left-label">Floor Level:</div>
+				<div class="flex-1 right-label" ng-bind="detail.floor"></div>
+			</div>
+			<div class="mt10 flex" ng-show="detail.postType=='want'">
+				<div class="left-label">Expect Floor Low:</div>
+				<div class="flex-1 right-label" ng-bind="detail.floor_low"></div>
+			</div>
+			<div class="mt10 flex" ng-show="detail.postType=='want'">
+				<div class="left-label">Floor Floor High:</div>
+				<div class="flex-1 right-label" ng-bind="detail.floor_high"></div>
+			</div>
+			<div class="mt10 flex">
+				<div class="left-label">Price:</div>
+				<div class="flex-1 right-label" ng-bind="detail.price"></div>
+			</div>
+			<div class="mt10 flex" ng-show="detail.postType=='have'">
+				<div class="left-label">Coop Rate(%):</div>
+				<div class="flex-1 right-label" ng-bind="detail.coop"></div>
+			</div>
+		</form>
+	</div>
+</div>
