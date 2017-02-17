@@ -31,7 +31,7 @@ app.service('postService', ['BaseHttpRequest', function(BaseHttpRequest){
 		},
 		postlist: function(urlOptions){
 			var requestObj = {
-				url: apiUrl + '/xlhapi/postlist?username=' + urlOptions.username + '&token=' + urlOptions.token + '&post_type=' + urlOptions.post_type + (urlOptions.postUnitType ? ('&unit_type=' + urlOptions.postUnitType) : '') + (urlOptions.postExposure ? ('&exposure=' + urlOptions.postExposure) : '')
+				url: apiUrl + '/xlhapi/postlist?username=' + urlOptions.username + '&token=' + urlOptions.token + (urlOptions.project_id == '' ? '' : ('&project_id=' + urlOptions.project_id)) + '&post_type=' + urlOptions.post_type + (urlOptions.postUnitType ? ('&unit_type=' + urlOptions.postUnitType) : '') + (urlOptions.postExposure ? ('&exposure=' + urlOptions.postExposure) : '')
 			}
 			return BaseHttpRequest.get(requestObj, postlistDto);
 		},

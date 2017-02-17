@@ -16,6 +16,7 @@ app.controller('postingCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog
 	var postListReq = {
 		username: StorageConfig.TOKEN_STORAGE.getItem('username'),
 		token: StorageConfig.TOKEN_STORAGE.getItem('token'),
+		project_id: StorageConfig.TOKEN_STORAGE.getItem('projectId') == undefined ? '' : StorageConfig.TOKEN_STORAGE.getItem('projectId'),
 		post_type: 'have'
 
 	}

@@ -28,7 +28,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                     templateUrl: 'app/modules/m_login/view/account.html'
                 })
                 .state('layout.project', {
-                    url: '/project',
+                    url: '/project?projectId',
                     templateUrl: 'app/modules/m_project/view/index.html'
                 })
                 .state('layout.projectList', {

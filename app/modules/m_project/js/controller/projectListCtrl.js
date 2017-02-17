@@ -14,6 +14,7 @@ app.controller('projectListCtrl', ['$scope', 'projectService', 'StorageConfig', 
 	var req = {
 		username: StorageConfig.TOKEN_STORAGE.getItem('username'),
 		token: StorageConfig.TOKEN_STORAGE.getItem('token'),
+		project_id: StorageConfig.TOKEN_STORAGE.getItem('projectId') == undefined ? '' : StorageConfig.TOKEN_STORAGE.getItem('projectId')
 	}
 	getData();
 
