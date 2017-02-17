@@ -1,5 +1,5 @@
-app.controller('postingCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog', 'projectService', '$timeout', 'postService', '$state', function($scope, StorageConfig, postService, dialog, projectService, $timeout, postService, $state){
-	$scope.selectedTab = 0;
+app.controller('postingCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog', 'projectService', '$timeout', 'postService', '$state', '$stateParams', function($scope, StorageConfig, postService, dialog, projectService, $timeout, postService, $state, $stateParams){
+	$scope.selectedTab = $stateParams.tab == undefined ? 0 : $stateParams.tab;
 
 	//post list: type select
 	$scope.showPostType = false;
@@ -17,7 +17,7 @@ app.controller('postingCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog
 		username: StorageConfig.TOKEN_STORAGE.getItem('username'),
 		token: StorageConfig.TOKEN_STORAGE.getItem('token'),
 		project_id: StorageConfig.TOKEN_STORAGE.getItem('projectId') == undefined ? '' : StorageConfig.TOKEN_STORAGE.getItem('projectId'),
-		post_type: 'have'
+		post_type: $stateParams.type == undefined ? 'have' : $stateParams.type
 
 	}
 

@@ -1,4 +1,4 @@
-app.controller('editPostCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog', '$timeout', function($scope, StorageConfig, postService, dialog, $timeout){
+app.controller('editPostCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog', '$timeout', '$state', function($scope, StorageConfig, postService, dialog, $timeout, $state){
 	//获取筛选条件
 	var spinner = dialog.showSpinner();
 	postService.selectoptions().then(function(res){
@@ -107,6 +107,10 @@ app.controller('editPostCtrl', ['$scope', 'StorageConfig', 'postService', 'dialo
 				$scope.post.floor = $scope.post.floor_low + '-' + $scope.post.floor_high;
 			}
 			StorageConfig.POST_STORAGE.putItem('post', $scope.post);
+            $state.go('layout.posting', {
+                tab: 1,
+                type: $scope.post.postType
+            });
 		},function(res){
 			dialog.closeSpinner(spinner.id);
 			dialog.alert(res.errorMsg);

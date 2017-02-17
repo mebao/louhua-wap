@@ -36,7 +36,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                     templateUrl: 'app/modules/m_project/view/projectList.html'
                 })
                 .state('layout.posting', {
-                    url: '/posting',
+                    url: '/posting?tab&type',
                     templateUrl: 'app/modules/m_posting/view/index.html'
                 })
                 .state('layout.editPost', {
