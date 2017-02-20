@@ -1,6 +1,6 @@
 <div ng-controller="wechatloginCtrl" class="wechatlogin-page">
 	<div class="content-page text-center">
-		<p class="tip">获取微信信息中，请勿操作</p>
+		<p class="tip" ng-bind="loadingTip"></p>
 		<p class="loading" ng-bind="loadingText"></p>
 	</div>
 </div>
