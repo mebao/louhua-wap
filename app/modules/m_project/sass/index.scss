@@ -4,7 +4,7 @@
 		left: 0;
 		right: 0;
 		bottom: px2rem(50px);
-		z-index: 999;
+		z-index: 99;
 		background-color: rgba(0,0,0,0.5);
 		color: #fff;
 		padding: px2rem(10px);
@@ -51,6 +51,7 @@
 		.content-section{
 	    	overflow: auto;
     		font-size: px2rem(10px);
+    		margin-bottom: px2rem(38px);
 	    	.section{
 	    		transition: all 2s ease;
 	    	}

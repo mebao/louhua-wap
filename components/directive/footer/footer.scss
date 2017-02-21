@@ -50,3 +50,17 @@
         }
     }
 }
+.project-change{
+    position: absolute;
+    left: 0;
+    right: 66.666%;
+    bottom: 4.16667rem;
+    z-index: 999;
+    background-color: #fff;
+    text-align: center;
+    border-right: 1px solid #d6d6d6;
+    .item{
+        padding: px2rem(10px);
+        border-top: 1px solid #d6d6d6;
+    }
+}

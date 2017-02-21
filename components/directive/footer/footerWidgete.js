@@ -1,5 +1,5 @@
 app.directive('footerWidget', function () {
-    var ctrl = ['$scope', '$rootScope', 'StorageConfig', '$state', 'helper', 'CMSDataConfig', function ($scope, $rootScope, StorageConfig, $state, helper, CMSDataConfig) {
+    var ctrl = ['$scope', '$rootScope', 'StorageConfig', '$state', 'helper', 'CMSDataConfig', 'postService', function ($scope, $rootScope, StorageConfig, $state, helper, CMSDataConfig, postService) {
         var defaults = {
             enableFooter: true,
             enableCheckType: 1,
@@ -12,6 +12,18 @@ app.directive('footerWidget', function () {
             var temp = angular.copy(defaults);
             $scope.defaults = angular.extend(temp, data);
         });
+
+        //get projectList
+        $scope.showChange = false;
+        postService.selectoptions().then(function(res){
+            $scope.projectList = res.results.optionsProject;
+        },function(res){});
+        $scope.changeProject = function(_projectId){
+            $scope.showChange = false;
+            $state.go('layout.project', {
+                projectId: _projectId
+            });
+        }
 
         $rootScope.$on('$locationChangeSuccess',function(){
             var currentHash = window.location.hash;
@@ -38,6 +50,7 @@ app.directive('footerWidget', function () {
         $scope.selectedIndex = StorageConfig.FOOTER_STORAGE.getItem('selectedItemIndex') || 0;
         $scope.selectItem = function (item, index) {
             if ($scope.selectedIndex != index) {
+                $scope.showChange = false;
                 if (item.beforeCall && typeof item.beforeCall === 'function') {
                     if (item.beforeCall()) {
                         $scope.selectedIndex = index;
@@ -50,10 +63,20 @@ app.directive('footerWidget', function () {
                     $scope.selectedIndex = index;
                     StorageConfig.FOOTER_STORAGE.putItem('selectedItemIndex', index);
                     if (item.route) {
-                        $state.go(item.route);
+                        if($scope.selectedIndex == 0){
+                            $state.go(item.route, {
+                                projectId: StorageConfig.TOKEN_STORAGE.getItem('projectId') == undefined ? '' : StorageConfig.TOKEN_STORAGE.getItem('projectId')
+                            });
+                        }else{
+                            $state.go(item.route);
+                        }
                     }
                 }
 
+            }else{
+                if($scope.selectedIndex == 0){
+                    $scope.showChange = !$scope.showChange;
+                }
             }
         };
     }];
@@ -74,6 +97,9 @@ app.directive('footerWidget', function () {
 app.run(['$templateCache', function ($templateCache) {
     $templateCache.put('template/footer.html',
         '<footer class="layout-footer" id="layoutFooter" ng-show="defaults.enableFooter">\
+        <div class="project-change" ng-show="showChange">\
+            <div class="item" ng-repeat="(key, value) in projectList" ng-click="changeProject(key)" ng-bind="value"></div>\
+        </div>\
         <div class="footer">\
             <div class="item" ng-repeat="item in menuList" ng-click="selectItem(item, $index)"><span class="iconfont" ng-class="{false:item.class, true: item.class+\'fill active\'}[$index == footerSelectedIndex]"></span><span class="text" ng-class="{\'active\':$index == selectedIndex}" ng-bind="item.text"></span></div>\
         </div></footer>');

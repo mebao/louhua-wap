@@ -171,6 +171,8 @@ app.controller('projectListCtrl', ['$scope', 'projectService', 'StorageConfig', 
 	$scope.haveCoop = 0;
 	//have排序
 	$scope.haveSort = function(type, num){
+		$scope.haveUnitType = false;
+		$scope.haveExposure = false;
 		num++;
 		if(num == 3){
 			num = 0;
@@ -204,6 +206,8 @@ app.controller('projectListCtrl', ['$scope', 'projectService', 'StorageConfig', 
 	$scope.wantCoop = 0;
 	//want排序
 	$scope.wantSort = function(type, num){
+		$scope.wantUnitType = false;
+		$scope.wantExposure = false;
 		num++;
 		if(num == 3){
 			num = 0;
