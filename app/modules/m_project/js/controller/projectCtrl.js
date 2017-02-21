@@ -1,4 +1,4 @@
-app.controller('projectCtrl', ['$scope', 'projectService', 'dialog', 'StorageConfig', '$state', '$stateParams', function($scope, projectService, dialog, StorageConfig, $state, $stateParams){
+app.controller('projectCtrl', ['$scope', 'projectService', 'dialog', 'StorageConfig', '$state', '$stateParams', '$timeout', function($scope, projectService, dialog, StorageConfig, $state, $stateParams, $timeout){
 	var username_storage = StorageConfig.TOKEN_STORAGE.getItem('username');
 	var token_storage = StorageConfig.TOKEN_STORAGE.getItem('token');
 	var tab_storage = StorageConfig.PROJECT_STORAGE.getItem('tab');
@@ -70,8 +70,59 @@ app.controller('projectCtrl', ['$scope', 'projectService', 'dialog', 'StorageCon
 		$scope.selectedWantItem = _id;
 	}
 
+	$scope.match = function(_id, _type){
+		if(username_storage && token_storage){
+			var spinner = dialog.showSpinner();
+			var params = {
+				username: StorageConfig.TOKEN_STORAGE.getItem('username'),
+				token: StorageConfig.TOKEN_STORAGE.getItem('token'),
+				id: _id,
+				post_type: _type
+			}
+			projectService.userwatch(params).then(function(res){
+				$scope.selectedPostItem = 0;
+				$scope.selectedWantItem = 0;
+				dialog.closeSpinner(spinner.id);
+				if(res.results.msg == 'ok'){
+					$scope.matchTip = 'Your match request has been submitted successful. Our agent will contact with you shortly.';
+				}else{
+					$scope.matchTip = 'Your match request has been submitted successful. You are on the waiting list. Our agent will contact with you shortly.';
+				}
+				$scope.matchOk = true;
+				$timeout(function(){
+					$scope.matchOk = false;
+				},2000);
+			},function(res){
+				$scope.selectedPostItem = 0;
+				$scope.selectedWantItem = 0;
+				dialog.closeSpinner(spinner.id);
+				dialog.alert(res.errorMsg);
+			});
+		}else{
+			dialog.alert('Please login first.', {
+				closeCallback: function(value){
+					if(value == 0 ){
+					}else{
+						$state.go('layout.login');
+					}
+				}
+			});
+		}
+	}
+
 	$scope.detail = function(_detail){
-		StorageConfig.PROJECT_STORAGE.putItem('detail', _detail);
-		$state.go('layout.projectDetail');
+		if(username_storage && token_storage){
+			StorageConfig.PROJECT_STORAGE.putItem('detail', _detail);
+			$state.go('layout.projectDetail');
+		}else{
+			dialog.alert('Please login first.', {
+				closeCallback: function(value){
+					if(value == 0 ){
+					}else{
+						$state.go('layout.login');
+					}
+				}
+			});
+		}
 	}
 }]);
