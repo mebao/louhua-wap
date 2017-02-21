@@ -111,8 +111,22 @@ app.factory('BaseHttpRequest', ['$http', '$q', 'dialog', 'StorageConfig','helper
                 dialog.alert(status + ':服务器错误，请重试');
             }
         }).error(function (data, status, headers, config) {
-            helper.closeAllDialog();
-            dialog.alert(status + ':服务器错误，请重试');
+            // 不需相应（例如后台重定向，status:-）
+            var reqList = [
+                'wxuserid',
+                'api.louhua.meb168.com'
+            ];
+            var intercept = false;
+            angular.forEach(reqList, function(url, index, array){
+                if(config.url.indexOf(url) != -1){
+                    intercept = true;
+                }
+            });
+
+            if(!intercept){
+                helper.closeAllDialog();
+                dialog.alert(status + ':服务器错误，请重试');
+            }
         });
         return deferred.promise;
     }

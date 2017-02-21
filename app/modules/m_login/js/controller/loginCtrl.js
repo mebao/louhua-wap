@@ -47,6 +47,9 @@ app.controller('loginCtrl',['$scope', 'CommonService', 'dialog', '$stateParams',
 			}else{
 				StorageConfig.TOKEN_STORAGE.putItem('username', $scope.username);
 				StorageConfig.TOKEN_STORAGE.putItem('token', res.results.userinfo.token);
+				if(res.results.userinfo.wx_userid == null){
+					window.location.href = apiUrl + '/xlhapi/wxuserid?username=' + StorageConfig.TOKEN_STORAGE.getItem('username') + '&token=' + StorageConfig.TOKEN_STORAGE.getItem('token');
+				}
 				if($stateParams.from == undefined){
 					$state.go('layout.project');
 				}else{
