@@ -20,7 +20,7 @@ app.service('projectService', ['BaseHttpRequest', function(BaseHttpRequest){
 	var service = {
 		project: function(urlOptions){
 			var requestObj = {
-				url: apiUrl + '/xlhapi/project' + (urlOptions.projectid == '' ? '' : ('?projectid=' + urlOptions.projectid))
+				url: apiUrl + '/xlhapi/project?app=1' + (urlOptions.username == '' ? '' : ('&username=' + urlOptions.username + '&token=' + urlOptions.token)) + (urlOptions.projectid == '' ? '' : ('&projectid=' + urlOptions.projectid))
 			}
 			return BaseHttpRequest.get(requestObj, projectDto);
 		},

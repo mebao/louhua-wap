@@ -137,33 +137,39 @@ app.controller('projectListCtrl', ['$scope', 'projectService', 'StorageConfig', 
 		$state.go('layout.projectDetail');
 	}
 
-	$scope.match = function(_id, _type){
-		var spinner = dialog.showSpinner();
-		var params = {
-			username: StorageConfig.TOKEN_STORAGE.getItem('username'),
-			token: StorageConfig.TOKEN_STORAGE.getItem('token'),
-			id: _id,
-			post_type: _type
-		}
-		projectService.userwatch(params).then(function(res){
+	$scope.match = function(_match, _type){
+		if(_match.canMatch == 0){
 			$scope.selectedHaveItem = 0;
 			$scope.selectedWantItem = 0;
-			dialog.closeSpinner(spinner.id);
-			if(res.results.msg == 'ok'){
-				$scope.matchTip = 'Your match request has been submitted successful. Our agent will contact with you shortly.';
-			}else{
-				$scope.matchTip = 'Your match request has been submitted successful. You are on the waiting list. Our agent will contact with you shortly.';
+			dialog.toast('This unit cannot be match');
+		}else{
+			var spinner = dialog.showSpinner();
+			var params = {
+				username: StorageConfig.TOKEN_STORAGE.getItem('username'),
+				token: StorageConfig.TOKEN_STORAGE.getItem('token'),
+				id: _match.id,
+				post_type: _type
 			}
-			$scope.matchOk = true;
-			$timeout(function(){
-				$scope.matchOk = false;
-			},2000);
-		},function(res){
-			$scope.selectedHaveItem = 0;
-			$scope.selectedWantItem = 0;
-			dialog.closeSpinner(spinner.id);
-			dialog.alert(res.errorMsg);
-		});
+			projectService.userwatch(params).then(function(res){
+				$scope.selectedHaveItem = 0;
+				$scope.selectedWantItem = 0;
+				dialog.closeSpinner(spinner.id);
+				if(res.results.msg == 'ok'){
+					$scope.matchTip = 'Your match request has been submitted successful. Our agent will contact with you shortly.';
+				}else{
+					$scope.matchTip = 'Your match request has been submitted successful. You are on the waiting list. Our agent will contact with you shortly.';
+				}
+				$scope.matchOk = true;
+				$timeout(function(){
+					$scope.matchOk = false;
+				},2000);
+			},function(res){
+				$scope.selectedHaveItem = 0;
+				$scope.selectedWantItem = 0;
+				dialog.closeSpinner(spinner.id);
+				dialog.alert(res.errorMsg);
+			});
+		}
 	}
 
 	$scope.haveFloor = 0;

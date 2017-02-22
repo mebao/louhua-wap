@@ -137,8 +137,24 @@ app.controller('postingCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog
             },2000);
             return false;
         }
-        if($scope.selectedType == 'have' && ($scope.floor_level == undefined || $scope.floor_level.replace(/\s+/g, "").replace(/\s+/g, "") == '')){
-            $scope.errorTip = 'this Floor Level must input';
+        if($scope.selectedType == 'have' && ($scope.floor_low == undefined || $scope.floor_low.replace(/\s+/g, "").replace(/\s+/g, "") == '')){
+            $scope.errorTip = 'this Floor Low must input';
+            $scope.errorMsg = true;
+            $timeout(function(){
+                $scope.errorMsg = false;
+            },2000);
+            return false;
+        }
+        if($scope.selectedType == 'have' && ($scope.floor_high == undefined || $scope.floor_high.replace(/\s+/g, "").replace(/\s+/g, "") == '')){
+            $scope.errorTip = 'this Floor High must input';
+            $scope.errorMsg = true;
+            $timeout(function(){
+                $scope.errorMsg = false;
+            },2000);
+            return false;
+        }
+        if($scope.selectedType == 'have' && (parseInt($scope.floor_low) >= parseInt($scope.floor_high))){
+            $scope.errorTip = 'this Floor high must greater than Floor low';
             $scope.errorMsg = true;
             $timeout(function(){
                 $scope.errorMsg = false;
@@ -212,7 +228,8 @@ app.controller('postingCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog
 			exposure: $scope.exposure,
 			price: $scope.price,
 			coop: $scope.coop,
-			floor_level: $scope.floor_level,
+			floor_low: $scope.floor_low,
+			floor_high: $scope.floor_high,
 			expect_floor_low: $scope.expect_floor_low,
 			expect_floor_high: $scope.expect_floor_high,
 		}

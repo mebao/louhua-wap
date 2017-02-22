@@ -25,6 +25,8 @@ app.controller('projectCtrl', ['$scope', 'projectService', 'dialog', 'StorageCon
 	function getData(){
 		var spinner = dialog.showSpinner();
 		var req = {
+			username: StorageConfig.TOKEN_STORAGE.getItem('username') == undefined ? '' : StorageConfig.TOKEN_STORAGE.getItem('username'),
+			token: StorageConfig.TOKEN_STORAGE.getItem('token') == undefined ? '' : StorageConfig.TOKEN_STORAGE.getItem('token'),
 			projectid: $stateParams.projectId == undefined ? '' : $stateParams.projectId
 		}
 		projectService.project(req).then(function(res){
@@ -70,34 +72,40 @@ app.controller('projectCtrl', ['$scope', 'projectService', 'dialog', 'StorageCon
 		$scope.selectedWantItem = _id;
 	}
 
-	$scope.match = function(_id, _type){
+	$scope.match = function(_post, _type){
 		if(username_storage && token_storage){
-			var spinner = dialog.showSpinner();
-			var params = {
-				username: StorageConfig.TOKEN_STORAGE.getItem('username'),
-				token: StorageConfig.TOKEN_STORAGE.getItem('token'),
-				id: _id,
-				post_type: _type
-			}
-			projectService.userwatch(params).then(function(res){
-				$scope.selectedPostItem = 0;
-				$scope.selectedWantItem = 0;
-				dialog.closeSpinner(spinner.id);
-				if(res.results.msg == 'ok'){
-					$scope.matchTip = 'Your match request has been submitted successful. Our agent will contact with you shortly.';
-				}else{
-					$scope.matchTip = 'Your match request has been submitted successful. You are on the waiting list. Our agent will contact with you shortly.';
+			if(_post.canMatch == 1){
+				var spinner = dialog.showSpinner();
+				var params = {
+					username: StorageConfig.TOKEN_STORAGE.getItem('username'),
+					token: StorageConfig.TOKEN_STORAGE.getItem('token'),
+					id: _post.id,
+					post_type: _type
 				}
-				$scope.matchOk = true;
-				$timeout(function(){
-					$scope.matchOk = false;
-				},2000);
-			},function(res){
+				projectService.userwatch(params).then(function(res){
+					$scope.selectedPostItem = 0;
+					$scope.selectedWantItem = 0;
+					dialog.closeSpinner(spinner.id);
+					if(res.results.msg == 'ok'){
+						$scope.matchTip = 'Your match request has been submitted successful. Our agent will contact with you shortly.';
+					}else{
+						$scope.matchTip = 'Your match request has been submitted successful. You are on the waiting list. Our agent will contact with you shortly.';
+					}
+					$scope.matchOk = true;
+					$timeout(function(){
+						$scope.matchOk = false;
+					},2000);
+				},function(res){
+					$scope.selectedPostItem = 0;
+					$scope.selectedWantItem = 0;
+					dialog.closeSpinner(spinner.id);
+					dialog.alert(res.errorMsg);
+				});
+			}else{
 				$scope.selectedPostItem = 0;
 				$scope.selectedWantItem = 0;
-				dialog.closeSpinner(spinner.id);
-				dialog.alert(res.errorMsg);
-			});
+				dialog.toast('This unit cannot be match');
+			}
 		}else{
 			dialog.alert('Please login first.', {
 				closeCallback: function(value){

@@ -59,9 +59,15 @@
 							</div>
 						</div>
 						<div class="mt10 flex" ng-show="selectedType=='have'">
-							<div class="input-label">Floor Level:</div>
+							<div class="input-label">Floor Low:</div>
 							<div class="flex-1">
-								<input type="tel" ng-model="floor_level" maxlength="4" placeholder="Floor Level">
+								<input type="tel" ng-model="floor_low" maxlength="4" placeholder="Floor Low">
+							</div>
+						</div>
+						<div class="mt10 flex" ng-show="selectedType=='have'">
+							<div class="input-label">Floor High:</div>
+							<div class="flex-1">
+								<input type="tel" ng-model="floor_high" maxlength="4" placeholder="Floor High">
 							</div>
 						</div>
 						<div class="mt10 flex" ng-show="selectedType=='want'">
@@ -116,6 +122,7 @@
 				</div>
 				<div class="flex-1 tab-list">
 					<div class="tab-item" ng-repeat="post in postList">
+						<div class="text-right" ng-show="post.isupdate == 0">match</div>
 						<div class="flex">
 							<div class="w55p">
 								<img src="app/images/user_small.jpeg" class="w100 pr5">
