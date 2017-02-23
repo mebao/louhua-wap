@@ -23,6 +23,8 @@ app.controller('postingCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog
 
 	$scope.myPostType = 'have';
 	$scope.postType = function(_type){
+		$scope.postUnitType = false;
+		$scope.postExposure = false;
 		$scope.myPostType = _type;
 		var spinner = dialog.showSpinner();
 		$scope.showPostType = false;
@@ -38,6 +40,8 @@ app.controller('postingCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog
 	$scope.postPrice = 0;
 	$scope.postCoop = 0;
 	$scope.postSort = function(type, num){
+		$scope.postUnitType = false;
+		$scope.postExposure = false;
 		num++;
 		if(num == 3){
 			num = 0;
@@ -243,7 +247,8 @@ app.controller('postingCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog
 			$scope.exposure = undefined;
 			$scope.price = undefined;
 			$scope.coop = undefined;
-			$scope.floor_level = undefined;
+			$scope.floor_low = undefined;
+			$scope.floor_high = undefined;
 			$scope.expect_floor_low = undefined;
 			$scope.expect_floor_high = undefined;
 		},function(res){
@@ -286,7 +291,7 @@ app.controller('postingCtrl', ['$scope', 'StorageConfig', 'postService', 'dialog
 
 	$scope.edit = function(_post){
 		if(_post.isupdate == 0){
-			dialog.toast('This unit cannot be edited');
+			dialog.toast('please contact us to modify it.');
 		}else{
 			StorageConfig.POST_STORAGE.putItem('post', _post);
 			$state.go('layout.editPost');
