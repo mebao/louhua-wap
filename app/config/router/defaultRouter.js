@@ -15,6 +15,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                         }]
                     }
                 })
+                .state('layout.selectProject', {
+                    url: '/selectProject',
+                    templateUrl: 'app/modules/m_home/view/selectProject.html'
+                })
                 .state('layout.login', {
                     url: '/login?from',
                     templateUrl: 'app/modules/m_login/view/index.html'

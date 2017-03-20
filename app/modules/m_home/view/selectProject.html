@@ -1,0 +1,7 @@
+<div ng-controller="selectProjectCtrl" class="selectProject-page">
+	<div class="content-page">
+		<div class="select-body">
+			<div class="item" ng-repeat="(key, value) in optionsProject" ng-bind="value" ng-click="goProject(key)"></div>
+		</div>
+	</div>
+</div>

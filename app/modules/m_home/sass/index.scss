@@ -8,3 +8,29 @@
 		font-size: px2rem(20px);
 	}
 }
+.selectProject-page{
+	.content-page{
+		bottom: 0!important;
+		background-color: rgba(0,0,0,0.5);
+		.select-body{
+		    width: px2rem(260px);
+		    position: absolute;
+		    top: 40%;
+		    left: 50%;
+		    margin-left: px2rem(-130px);
+		    background: #ffffff;
+		    z-index: 99999;
+		    border-radius: px2rem(6px);
+		    overflow: hidden;
+		    .item{
+		    	font-size: px2rem(14px);
+		    	text-align: center;
+		    	padding: px2rem(10px);
+		    	border-bottom: 1px solid #d6d6d6;
+		    	&.last-child{
+		    		border-bottom: none;
+		    	}
+		    }
+		}
+	}
+}
