@@ -8,12 +8,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
                 })
                 .state('layout.home', {
                     url: '/home',
-                    templateUrl: 'app/modules/m_home/view/index.html',
-                    resolve: {
-                        deps: ['$ocLazyLoad', function($ocLazyLoad) {
-                            return $ocLazyLoad.load('echarts').then(function(){});
-                        }]
-                    }
+                    templateUrl: 'app/modules/m_home/view/index.html'
                 })
                 .state('layout.selectProject', {
                     url: '/selectProject',
