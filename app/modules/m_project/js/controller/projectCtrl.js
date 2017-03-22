@@ -35,7 +35,22 @@ app.controller('projectCtrl', ['$scope', 'projectService', 'dialog', 'StorageCon
 			$scope.postList = res.results.postList;
 			StorageConfig.TOKEN_STORAGE.putItem('projectName', res.results.project.name);
 			StorageConfig.TOKEN_STORAGE.putItem('projectId', res.results.project.id);
+
 			document.title = res.results.project.name;
+			//解决document.title 在 ios 下不生效bug方案 ios内生效
+            var body = document.getElementsByTagName('body')[0];
+	        var iframe = document.createElement("iframe");
+	        iframe.style.display="none";
+	        iframe.setAttribute("src", "http://named.cn/page/take/img/icon_phone.png");
+	        var d = function() {
+	          setTimeout(function() {
+	            iframe.removeEventListener('load', d);
+	            document.body.removeChild(iframe);
+	          }, 0);
+	        };
+	        iframe.addEventListener('load', d);
+	        document.body.appendChild(iframe);
+
 			if(username_storage && token_storage){
 				var req = {
 					username: username_storage,
