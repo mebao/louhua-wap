@@ -17,8 +17,11 @@
 		.tab-item{
 			padding: 0.83333rem;
 	    	border-bottom: .08333rem solid #E6E6E6;
-	    	&.active{
+	    	&.have.active{
 	    		background-color: #B3F7E1;
+	    	}
+	    	&.want.active{
+	    		background-color: #b3e2f7;
 	    	}
 		}
 		.top-section{
@@ -63,6 +66,11 @@
 			}
 		}
 	}
+}
+.icon-project{
+    margin-top: 0px;
+    width: 10px;
+    height: 10px;
 }
 .icon-home{
     width: 14px;
@@ -126,8 +134,11 @@
 		.tab-item{
 			padding: .83333rem;
 	    	border-bottom: .08333rem solid #E6E6E6;
-	    	&.active{
+	    	&.have.active{
 	    		background-color: #B3F7E1;
+	    	}
+	    	&.want.active{
+	    		background-color: #b3e2f7;
 	    	}
 		}
 		.top-section{

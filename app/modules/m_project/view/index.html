@@ -65,7 +65,7 @@
 			<div class="section" ng-show="selectedTab==0">
 				<div class="tab-list">
 					<div ng-repeat="post in postList">
-						<div class="tab-item flex" ng-class="{'active': post.id == selectedPostItem}" ng-click="checkPostItem(post.id)">
+						<div class="tab-item flex have" ng-class="{'active': post.id == selectedPostItem}" ng-click="checkPostItem(post.id)">
 							<div class="w55p">
 								<img src="app/images/user_small.jpeg" class="w100 pr5">
 							</div>
@@ -116,7 +116,7 @@
 			<div class="section" ng-show="selectedTab==1">
 				<div class="tab-list">
 					<div ng-repeat="want in wantList">
-						<div class="tab-item flex" ng-class="{'active': want.id == selectedWantItem}" ng-click="checkWantItem(want.id)">
+						<div class="tab-item flex want" ng-class="{'active': want.id == selectedWantItem}" ng-click="checkWantItem(want.id)">
 							<div class="w55p">
 								<img src="app/images/user_small.jpeg" class="w100 pr5">
 							</div>

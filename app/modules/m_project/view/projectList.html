@@ -37,7 +37,7 @@
 				</div>
 				<div class="tab-list flex-1">
 					<div ng-repeat="have in haveList">
-						<div class="tab-item flex" ng-class="{'active': have.id == selectedHaveItem}" ng-click="checkHaveItem(have.id)">
+						<div class="tab-item flex have" ng-class="{'active': have.id == selectedHaveItem}" ng-click="checkHaveItem(have.id)">
 							<div class="w55p">
 								<img src="app/images/user_small.jpeg" class="w100 pr5">
 							</div>
@@ -106,7 +106,7 @@
 				</div>
 				<div class="tab-list flex-1">
 					<div ng-repeat="want in wantList">
-						<div class="tab-item flex" ng-class="{'active': want.id == selectedWantItem}" ng-click="checkWantItem(want.id)">
+						<div class="tab-item flex want" ng-class="{'active': want.id == selectedWantItem}" ng-click="checkWantItem(want.id)">
 							<div class="w55p">
 								<img src="app/images/user_small.jpeg" class="w100 pr5">
 							</div>

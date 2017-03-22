@@ -1,4 +1,10 @@
 <div ng-controller="projectDetailCtrl" class="projectDetail-page">
+	<div class="popup-mask" ng-show="matchOk">
+        <div class="popup-section text-center projectList">
+        	<img src="app/images/right.png" class="w100p">
+            <div class="pl10 pr10" ng-bind="matchTip"></div>
+        </div>
+    </div>
 	<div class="content-page">
 		<div class="header-bar">
 			Unit Detail
@@ -12,6 +18,10 @@
 						<span ng-bind="detail.postType"></span>
 					</span>
 				</div>
+			</div>
+			<div class="mt10 flex">
+				<div class="left-label">Unit ID:</div>
+				<div class="flex-1 right-label" ng-bind="detail.id"></div>
 			</div>
 			<div class="mt10 flex">
 				<div class="left-label">Project Name:</div>
@@ -44,6 +54,9 @@
 			<div class="mt10 flex" ng-show="detail.postType=='have'">
 				<div class="left-label">Coop Rate(%):</div>
 				<div class="flex-1 right-label" ng-bind="detail.coop"></div>
+			</div>
+			<div class="btn-dock mt20" ng-show="detail.canMatch == 1">
+				<button ng-click="match(detail, detail.postType)" class="btn btn-primary">Match</button>
 			</div>
 		</form>
 	</div>

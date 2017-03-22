@@ -8,7 +8,7 @@ $btn-disabled-color: rgba(0,0,0,.4);
     line-height: px2rem($btn-height);
     border-radius: px2rem(6px);
     text-align: center;
-    font-size: px2rem(map_get($map-font-size, m));
+    font-size: px2rem(map_get($map-font-size, xs));
     border: none;
     background: none;
     padding: 0 px2rem(8px) 0 px2rem(8px);

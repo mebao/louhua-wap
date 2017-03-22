@@ -4,11 +4,11 @@
 	.input-label{
 		width: px2rem(130px);
 		line-height: px2rem(40px);
-		padding-left: 22px;
+		padding-left: 8px;
 		&.must{
 			background: url('images/star.png') no-repeat;
-			background-size: 16px 16px;
-			background-position-y: 50%;
+			background-size: 6px 6px;
+			background-position-y: px2rem(15px);
 		}
 	}
 	button{

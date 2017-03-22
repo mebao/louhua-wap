@@ -16,7 +16,11 @@ app.directive('footerWidget', function () {
         //get projectList
         $scope.showChange = false;
         postService.selectoptions().then(function(res){
-            $scope.projectList = res.results.optionsProject;
+            var optionsProject = res.results.optionsProject
+            for(var key in optionsProject){
+                optionsProject[key] = optionsProject[key].length > 5 ? optionsProject[key].substring(0, 5) + '...' : optionsProject[key];
+            }
+            $scope.projectList = optionsProject;
         },function(res){});
         $scope.changeProject = function(_projectId){
             $scope.showChange = false;

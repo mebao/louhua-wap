@@ -14,6 +14,7 @@ app.run(['$rootScope','StorageConfig','$state',function($rootScope,StorageConfig
 		if((toState.name=='layout.login') || (toState.name=='layout.register') || (toState.name=='layout.forgetpwd')) return;
 		//need intercept
 		var urlList = [
+			'project',
 			'projectList',
 			'posting',
 			'userinfo',

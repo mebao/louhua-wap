@@ -11,7 +11,7 @@ input[type="email"]{
     padding: px2rem(10px);
     background: none;
     color: #666;
-    font-size: px2rem(map_get($map-font-size, m));
+    font-size: px2rem(map_get($map-font-size, xs));
     width: 100%;
     -webkit-appearance: none;
     appearance: none;
