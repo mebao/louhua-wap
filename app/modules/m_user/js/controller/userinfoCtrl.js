@@ -29,7 +29,9 @@ app.controller('userinfoCtrl', ['$scope', 'userService', 'dialog', 'StorageConfi
 		var spinner2 = dialog.showSpinner();
         var updateReq = {
             user_id: $scope.userinfo.user_id,
+            username: $scope.userinfo.username,
             wechat_id: $scope.userinfo.wechat_id,
+            wechat_name: $scope.userinfo.wechat_name,
             real_name: $scope.userinfo.real_name,
             brokerage_name: $scope.userinfo.brokerage_name,
             cell: $scope.userinfo.cell,

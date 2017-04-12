@@ -25,9 +25,16 @@
 	    	}
 		}
 		.top-section{
+			.project-img{
+				height: px2rem(164px);
+				img{
+					width: 100%;
+					height: px2rem(164px);
+				}
+			}
 			.total-tab{
-				background: url('images/bg.jpeg') no-repeat;
-				background-size: 100% 100%;
+				position: absolute;
+				top: 0;
 				.left-tab{
 					padding: px2rem(10px) px2rem(20px) px2rem(10px) px2rem(10px);
 					background-color: rgba(18,24,28,0.5);

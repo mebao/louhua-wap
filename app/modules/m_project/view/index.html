@@ -13,6 +13,12 @@
     </div>
 	<div class="content-page flex">
 		<div class="top-section">
+			<div class="project-img" ng-if="picLength==0">
+				<img src="app/images/bg.jpeg">
+			</div>
+			<div class="project-img" ng-if="picLength!=0">
+				<img ng-repeat="(key, value) in pictures" ng-src="{{value}}" ng-show="showPic==key">
+			</div>
 			<div class="total-tab flex">
 				<div class="left-tab">
 					<p>

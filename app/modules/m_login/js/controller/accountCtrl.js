@@ -1,4 +1,4 @@
-app.controller('accountCtrl', ['$scope', 'dialog', 'CommonService', '$timeout', '$stateParams', '$state', function($scope, dialog, CommonService, $timeout, $stateParams, $state){
+app.controller('accountCtrl', ['$scope', 'dialog', 'CommonService', '$timeout', '$stateParams', '$state', 'StorageConfig', function($scope, dialog, CommonService, $timeout, $stateParams, $state, StorageConfig){
     $scope.errorMsg = false;
 	$scope.subscribe = 'no';
 	
@@ -9,8 +9,34 @@ app.controller('accountCtrl', ['$scope', 'dialog', 'CommonService', '$timeout', 
     $scope.accountId = $stateParams.accountId;
 
     $scope.account = function(){
+        if($scope.username == undefined || $scope.username.replace(/\s+/g, "") == ''){
+            $scope.errorTip = 'this Email must input';
+            $scope.errorMsg = true;
+            $timeout(function(){
+                $scope.errorMsg = false;
+            },2000);
+            return false;
+        }
+        //验证邮箱格式
+        var usernameType = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+        if(!$scope.username.match(usernameType)){
+            $scope.errorTip = 'this email format error';
+            $scope.errorMsg = true;
+            $timeout(function(){
+                $scope.errorMsg = false;
+            },2000);
+            return false;
+        }
         if($scope.wechat_id == undefined || $scope.wechat_id.replace(/\s+/g, "") == ''){
             $scope.errorTip = 'this Wechat ID must input';
+            $scope.errorMsg = true;
+            $timeout(function(){
+                $scope.errorMsg = false;
+            },2000);
+            return false;
+        }
+        if($scope.wechat_name == undefined || $scope.wechat_name.replace(/\s+/g, "") == ''){
+            $scope.errorTip = 'this Wechat Name must input';
             $scope.errorMsg = true;
             $timeout(function(){
                 $scope.errorMsg = false;
@@ -60,6 +86,8 @@ app.controller('accountCtrl', ['$scope', 'dialog', 'CommonService', '$timeout', 
         var spinner = dialog.showSpinner();
         var req = {
             user_id: $stateParams.id,
+            username: $scope.username,
+            wechat_name: $scope.wechat_name,
             wechat_id: $scope.wechat_id,
             real_name: $scope.real_name,
             brokerage_name: $scope.brokerage_name,
@@ -69,6 +97,7 @@ app.controller('accountCtrl', ['$scope', 'dialog', 'CommonService', '$timeout', 
             subscribe: $scope.subscribe,
         }
         CommonService.useraccount(req).then(function(res){
+            StorageConfig.TOKEN_STORAGE.putItem('username', $scope.username);
             dialog.closeSpinner(spinner.id);
             $state.go('layout.project');
         },function(res){

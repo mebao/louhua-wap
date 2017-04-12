@@ -1,4 +1,4 @@
-app.controller('projectCtrl', ['$scope', 'projectService', 'dialog', 'StorageConfig', '$state', '$stateParams', '$timeout', function($scope, projectService, dialog, StorageConfig, $state, $stateParams, $timeout){
+app.controller('projectCtrl', ['$scope', 'projectService', 'dialog', 'StorageConfig', '$state', '$stateParams', '$timeout', '$interval', function($scope, projectService, dialog, StorageConfig, $state, $stateParams, $timeout, $interval){
 	var username_storage = StorageConfig.TOKEN_STORAGE.getItem('username');
 	var token_storage = StorageConfig.TOKEN_STORAGE.getItem('token');
 	var tab_storage = StorageConfig.PROJECT_STORAGE.getItem('tab');
@@ -33,6 +33,18 @@ app.controller('projectCtrl', ['$scope', 'projectService', 'dialog', 'StorageCon
 			dialog.closeSpinner(spinner.id);
 			$scope.project = res.results.project;
 			$scope.postList = res.results.postList;
+			//处理project图片
+			$scope.pictures = res.results.project.pictures;
+			$scope.picLength = $scope.pictures.length;
+			$scope.showPic = 0;
+			if($scope.picLength > 0){
+				$interval(function(){
+					$scope.showPic++;
+					if($scope.showPic > ($scope.picLength - 1)){
+						$scope.showPic = 0;
+					}
+				}, 1000);
+			}
 			StorageConfig.TOKEN_STORAGE.putItem('projectName', res.results.project.name);
 			StorageConfig.TOKEN_STORAGE.putItem('projectId', res.results.project.id);
 

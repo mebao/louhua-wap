@@ -45,6 +45,14 @@ app.controller('registerCtrl',['$scope', '$state', 'CommonService', 'dialog', '$
             },2000);
             return false;
         }
+        if($scope.wechat_name == undefined || $scope.wechat_name.replace(/\s+/g, "") == ''){
+            $scope.errorTip = 'this Wechat Name must input';
+            $scope.errorMsg = true;
+            $timeout(function(){
+                $scope.errorMsg = false;
+            },2000);
+            return false;
+        }
         if($scope.real_name == undefined || $scope.real_name.replace(/\s+/g, "") == ''){
             $scope.errorTip = 'this Full Name must input';
             $scope.errorMsg = true;
@@ -82,6 +90,7 @@ app.controller('registerCtrl',['$scope', '$state', 'CommonService', 'dialog', '$
             username: $scope.username,
             password_raw: $scope.cell,
             wechat_id: $scope.wechat_id,
+            wechat_name: $scope.wechat_name,
             real_name: $scope.real_name,
             brokerage_name: $scope.brokerage_name,
             cell: $scope.cell,
