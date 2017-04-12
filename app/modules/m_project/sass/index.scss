@@ -25,14 +25,18 @@
 	    	}
 		}
 		.top-section{
+			.top-bar{
+				height: px2rem(170px);
+			}
 			.project-img{
-				height: px2rem(164px);
+				height: px2rem(170px);
 				img{
 					width: 100%;
-					height: px2rem(164px);
+					height: px2rem(170px);
 				}
 			}
 			.total-tab{
+				height: px2rem(170px);
 				position: absolute;
 				top: 0;
 				.left-tab{

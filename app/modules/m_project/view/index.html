@@ -13,52 +13,54 @@
     </div>
 	<div class="content-page flex">
 		<div class="top-section">
-			<div class="project-img" ng-if="picLength==0">
-				<img src="app/images/bg.jpeg">
-			</div>
-			<div class="project-img" ng-if="picLength!=0">
-				<img ng-repeat="(key, value) in pictures" ng-src="{{value}}" ng-show="showPic==key">
-			</div>
-			<div class="total-tab flex">
-				<div class="left-tab">
-					<p>
-						<span class="p-label">project name:</span>
-						<span class="c-white" ng-bind="project.name"></span>
-					</p>
-					<p>
-						<span class="p-label">total posts:</span>
-						<span class="c-white" ng-bind="project.totalPosts"></span>
-					</p>
-					<p>
-						<span class="p-label">average coop:</span>
-						<span class="c-white" ng-bind="project.averageCoop"></span>
-					</p>
-					<p>
-						<span class="p-label">studio:</span>
-						<span class="c-white" ng-bind="project.studio"></span>
-					</p>
-					<p>
-						<span class="p-label">1 bed:</span>
-						<span class="c-white" ng-bind="project.one"></span>
-					</p>
-					<p>
-						<span class="p-label">1+1 bed:</span>
-						<span class="c-white" ng-bind="project.oneandone"></span>
-					</p>
-					<p>
-						<span class="p-label">2 beds:</span>
-						<span class="c-white" ng-bind="project.two"></span>
-					</p>
-					<p>
-						<span class="p-label">2+1 beds:</span>
-						<span class="c-white" ng-bind="project.twoandone"></span>
-					</p>
-					<p>
-						<span class="p-label">3 beds:</span>
-						<span class="c-white" ng-bind="project.three"></span>
-					</p>
+			<div class="top-bar">
+				<div class="project-img" ng-if="picLength==0">
+					<img src="app/images/bg.jpeg">
 				</div>
-				<div class="flex-1"></div>
+				<div class="project-img" ng-if="picLength!=0">
+					<img ng-repeat="(key, value) in pictures" ng-src="{{value}}" ng-show="showPic==key">
+				</div>
+				<div class="total-tab flex">
+					<div class="left-tab">
+						<p>
+							<span class="p-label">project name:</span>
+							<span class="c-white" ng-bind="project.name"></span>
+						</p>
+						<p>
+							<span class="p-label">total posts:</span>
+							<span class="c-white" ng-bind="project.totalPosts"></span>
+						</p>
+						<p>
+							<span class="p-label">average coop:</span>
+							<span class="c-white" ng-bind="project.averageCoop"></span>
+						</p>
+						<p>
+							<span class="p-label">studio:</span>
+							<span class="c-white" ng-bind="project.studio"></span>
+						</p>
+						<p>
+							<span class="p-label">1 bed:</span>
+							<span class="c-white" ng-bind="project.one"></span>
+						</p>
+						<p>
+							<span class="p-label">1+1 bed:</span>
+							<span class="c-white" ng-bind="project.oneandone"></span>
+						</p>
+						<p>
+							<span class="p-label">2 beds:</span>
+							<span class="c-white" ng-bind="project.two"></span>
+						</p>
+						<p>
+							<span class="p-label">2+1 beds:</span>
+							<span class="c-white" ng-bind="project.twoandone"></span>
+						</p>
+						<p>
+							<span class="p-label">3 beds:</span>
+							<span class="c-white" ng-bind="project.three"></span>
+						</p>
+					</div>
+					<div class="flex-1"></div>
+				</div>
 			</div>
 			<div class="tab-box">
 				<div class="tab-header">

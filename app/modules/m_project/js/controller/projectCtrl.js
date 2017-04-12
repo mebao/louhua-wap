@@ -35,7 +35,7 @@ app.controller('projectCtrl', ['$scope', 'projectService', 'dialog', 'StorageCon
 			$scope.postList = res.results.postList;
 			//处理project图片
 			$scope.pictures = res.results.project.pictures;
-			$scope.picLength = $scope.pictures.length;
+			$scope.picLength = res.results.project.pictures.length;
 			$scope.showPic = 0;
 			if($scope.picLength > 0){
 				$interval(function(){
@@ -43,7 +43,7 @@ app.controller('projectCtrl', ['$scope', 'projectService', 'dialog', 'StorageCon
 					if($scope.showPic > ($scope.picLength - 1)){
 						$scope.showPic = 0;
 					}
-				}, 1000);
+				}, 3000);
 			}
 			StorageConfig.TOKEN_STORAGE.putItem('projectName', res.results.project.name);
 			StorageConfig.TOKEN_STORAGE.putItem('projectId', res.results.project.id);
